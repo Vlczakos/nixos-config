@@ -5,6 +5,8 @@
     brave
     vesktop
     prismlauncher
+    kdePackages.okular
+    xournalpp
 
     brightnessctl
     pamixer
