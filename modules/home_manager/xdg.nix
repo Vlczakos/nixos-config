@@ -7,7 +7,7 @@
       enable = true;
       defaultApplications = {
         "inode/directory" = [ "thunar.desktop" ];
-        "application/zip" = [ "thunar.desktop" ];
+        "application/zip" = [ "org.gnome.FileRoller.desktop" ];
         "x-scheme-handler/terminal" = [ "kitty-open.desktop" ];
       };
     };
