@@ -10,6 +10,7 @@
     ./packages.nix
     ./shell.nix
     ./steam.nix
+    ./thunar.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

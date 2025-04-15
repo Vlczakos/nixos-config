@@ -4,8 +4,6 @@
   home.packages = with pkgs; [
     brave
     vesktop
-    xfce.thunar
-    xfce.thunar-archive-plugin
     prismlauncher
     betaflight-configurator
 
