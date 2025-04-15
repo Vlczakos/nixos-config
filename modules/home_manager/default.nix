@@ -16,6 +16,7 @@
     ./dunst.nix
     ./mangohud.nix
     ./git.nix
+    ./betaflight.nix
   ];
 
   # Let Home Manager install and manage itself.

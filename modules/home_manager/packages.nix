@@ -5,7 +5,6 @@
     brave
     vesktop
     prismlauncher
-    betaflight-configurator
 
     brightnessctl
     pamixer
