@@ -20,6 +20,7 @@
         pkgs.vscode-extensions.jnoortheen.nix-ide
         pkgs.vscode-extensions.rust-lang.rust-analyzer
         pkgs.vscode-extensions.mkhl.direnv
+        pkgs.vscode-extensions.ms-python.python
       ];
 
       userSettings = {
