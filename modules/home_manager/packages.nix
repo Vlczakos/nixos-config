@@ -7,6 +7,7 @@
     prismlauncher
     kdePackages.okular
     xournalpp
+    vlc
 
     brightnessctl
     pamixer
