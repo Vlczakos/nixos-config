@@ -11,7 +11,7 @@
   ];
 
 
-  networking.hostName = "meduza"; # Define your hostname.
+  networking.hostName = "krakatice"; # Define your hostname.
 
   users.users.vlczak = {
     isNormalUser = true;
@@ -24,11 +24,6 @@
     # packages = with pkgs; [ ];
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
-
-  services.getty = {
-    autologinUser = "vlczak";
-    autologinOnce = true;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
