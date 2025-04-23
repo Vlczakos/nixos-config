@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-{
+{ lib, config, pkgs, ... }:
+lib.mkIf config.gui.enable {
   programs = {
     steam = {
       enable = true;

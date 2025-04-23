@@ -10,7 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-
   networking.hostName = "krakatice"; # Define your hostname.
 
   users.users.vlczak = {

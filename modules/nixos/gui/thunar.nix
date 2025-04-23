@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-{
+{ pkgs, lib, config, ... }:
+lib.mkIf config.gui.enable {
   programs.thunar = {
     enable = true;
 

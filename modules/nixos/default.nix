@@ -9,8 +9,8 @@
     ./nvidia.nix
     ./packages.nix
     ./shell.nix
-    ./steam.nix
-    ./thunar.nix
+
+    ./gui
   ];
 
   nixpkgs.config.allowUnfree = true;

@@ -1,5 +1,5 @@
-{ ... }:
-{
+{ lib, nixos-config, ... }:
+lib.mkIf nixos-config.gui.enable {
   services.dunst = {
     enable = true;
 

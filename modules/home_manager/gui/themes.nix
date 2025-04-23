@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-{
+{ lib, nixos-config, pkgs, ... }:
+lib.mkIf nixos-config.gui.enable {
   home.packages = with pkgs; [
     #nerd-fonts.blex-mono
     nerd-fonts.bitstream-vera-sans-mono

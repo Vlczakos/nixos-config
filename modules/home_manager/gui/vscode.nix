@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, nixos-config, pkgs, ... }:
 
-{
+lib.mkIf nixos-config.gui.enable {
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
