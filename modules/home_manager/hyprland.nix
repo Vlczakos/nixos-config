@@ -52,39 +52,92 @@ let
         gl_FragColor = outCol;
     }
   '';
-  hyprland_screen_shader = pkgs.writeShellScriptBin "hyprland_screen_shader" ''
-    turn_on() {
-      if [ "$2" == "on" ]; then 
-        hyprctl keyword debug:damage_tracking off
-      fi
-
-      hyprctl keyword decoration:screen_shader $1
-    }
-
-    turn_off() {
-      hyprctl keyword debug:damage_tracking on
-      hyprctl keyword decoration:screen_shader ""
-    }
-
-    case $1 in
-      toggle)
-        value="$(hyprctl getoption decoration:screen_shader | grep str)"
-
-        if [ "$value" == "str: $2" ]; then 
-          turn_off
-        else
-          turn_on $2 $3
+  hyprland_screen_shader = lib.getExe (
+    pkgs.writeShellScriptBin "hyprland_screen_shader" ''
+      turn_on() {
+        if [ "$2" == "on" ]; then 
+          hyprctl keyword debug:damage_tracking off
         fi
 
-        ;;
-      on)
-        turn_on $2 $3
-        ;;
-      off)
-        turn_off
-        ;;
-    esac
-  '';
+        hyprctl keyword decoration:screen_shader $1
+      }
+
+      turn_off() {
+        hyprctl keyword debug:damage_tracking on
+        hyprctl keyword decoration:screen_shader ""
+      }
+
+      case $1 in
+        toggle)
+          value="$(hyprctl getoption decoration:screen_shader | grep str)"
+
+          if [ "$value" == "str: $2" ]; then 
+            turn_off
+          else
+            turn_on $2 $3
+          fi
+
+          ;;
+        on)
+          turn_on $2 $3
+          ;;
+        off)
+          turn_off
+          ;;
+      esac
+    ''
+  );
+  volume_script = lib.getExe (
+    pkgs.writeShellScriptBin "volume_script" ''
+      case $1 in
+        t)
+          pamixer -t
+          ;;
+        i)
+          pamixer --allow-boost -i 1
+          ;;
+        d)
+          pamixer --allow-boost -d 1
+          ;;
+      esac
+
+      volume=$(pamixer --get-volume-human)
+      #device=$(pamixer --get-default-sink | awk 'NR == 2' | sed -n 's/.*"\(.*\)"/\1/p')
+
+      dunstify -h string:x-dunst-stack-tag:volume -t 1000 $volume
+    ''
+  );
+  brightness_script = lib.getExe (
+    pkgs.writeShellScriptBin "brightness_script" ''
+      case $1 in
+        i)
+          brightnessctl set +5%
+          ;;
+        d)
+          brightnessctl set 5%-
+          ;;
+      esac
+
+      curr_brightness=$(brightnessctl get)
+      max_brightness=$(brightnessctl max)
+      brightness=$((curr_brightness * 100 / max_brightness))
+
+      dunstify -h string:x-dunst-stack-tag:brightness -t 1000 $brightness%
+    ''
+  );
+  keyboard_switch_script = lib.getExe (
+    pkgs.writeShellScriptBin "keyboard_toggle_script" ''
+      keyboards=$(hyprctl devices | grep -A6 "Keyboard at" | grep -B5 "main: yes" | awk 'NR % 6 == 1' | awk '{print $1}')
+
+      for kbd in $keyboards; do
+          hyprctl switchxkblayout "$kbd" next
+      done
+
+      active=$(hyprctl devices | grep -A2 "$keyboards" | grep "active keymap:" | awk '{$1=""; $2=""; sub(/^  */, ""); print}')
+
+      dunstify -h string:x-dunst-stack-tag:keyboard_layout -t 1000 "$active"
+    ''
+  );
 in
 {
   wayland.windowManager.hyprland = {
@@ -261,37 +314,28 @@ in
       ];
 
       bindl = [
-        ", XF86AudioMute, exec, pamixer -t"
+        ", XF86AudioMute, exec, ${volume_script} t"
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPause, exec, playerctl play-pause"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
 
+        "$mainMod, K, exec, hyprctl dispatch dpms off"
+        "$mainMod SHIFT, K, exec, hyprctl dispatch dpms on"
+
         ",switch:on:Lid Switch,exec, hyprctl dispatch dpms off && hyprlock"
         ",switch:off:Lid Switch,exec, hyprctl dispatch dpms on"
 
-        "$mainMod, N, exec, ${lib.getExe hyprland_screen_shader} toggle ${blue_light_filter_shader}"
+        "$mainMod, N, exec, ${hyprland_screen_shader} toggle ${blue_light_filter_shader}"
 
-        "$mainMod, Space, exec, ${lib.getExe (
-          pkgs.writeShellScriptBin "keyboard_toggle_script" ''
-            keyboards=$(hyprctl devices | grep -A6 "Keyboard at" | grep -B5 "main: yes" | awk 'NR % 6 == 1' | awk '{print $1}')
-
-            for kbd in $keyboards; do
-                hyprctl switchxkblayout "$kbd" next
-            done
-
-            active=$(hyprctl devices | grep -A2 "$keyboards" | grep "active keymap:" | awk '{$1=""; $2=""; sub(/^  */, ""); print}')
-
-            dunstify -h string:x-dunst-stack-tag:keyboard_layout -t 1000 "$active"
-          ''
-        )}"
+        "$mainMod, Space, exec, ${keyboard_switch_script}"
       ];
 
       bindel = [
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        ", XF86AudioLowerVolume, exec, pamixer --allow-boost -d 1"
-        ", XF86AudioRaiseVolume, exec, pamixer --allow-boost -i 1"
+        ", XF86MonBrightnessUp, exec, ${brightness_script} i"
+        ", XF86MonBrightnessDown, exec, ${brightness_script} d"
+        ", XF86AudioLowerVolume, exec, ${volume_script} d"
+        ", XF86AudioRaiseVolume, exec, ${volume_script} i"
       ];
     };
   };

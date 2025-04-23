@@ -21,6 +21,7 @@
         pkgs.vscode-extensions.rust-lang.rust-analyzer
         pkgs.vscode-extensions.mkhl.direnv
         pkgs.vscode-extensions.ms-python.python
+        pkgs.vscode-extensions.tamasfe.even-better-toml
       ];
 
       userSettings = {
