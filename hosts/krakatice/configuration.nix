@@ -1,7 +1,4 @@
 {
-  inputs,
-  config,
-  pkgs,
   ...
 }:
 
@@ -10,6 +7,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/shared
+    ./../../modules/nixos/servers/minecraft.nix
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.
@@ -21,6 +19,7 @@
       "networkmanager"
       "wheel"
       "dialout"
+      "minecraft"
     ];
     # packages = with pkgs; [ ];
   };

@@ -5,4 +5,8 @@
     brightnessctl
     pamixer
   ];
+
+  programs.kitty = {
+    enable = true;
+  };
 }

@@ -6,7 +6,9 @@
     killall
     git
     usbutils
+    tmux
   ];
 
   programs.direnv.enable = true;
+  programs.tmux.enable = true;
 }
