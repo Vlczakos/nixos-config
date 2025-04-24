@@ -7,6 +7,7 @@
     git
     usbutils
     tmux
+    sshfs
   ];
 
   programs.direnv.enable = true;
