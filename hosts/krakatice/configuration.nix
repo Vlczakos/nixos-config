@@ -8,6 +8,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+
+    ./../../modules/nixos/shared
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.

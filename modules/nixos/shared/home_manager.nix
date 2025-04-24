@@ -10,6 +10,6 @@
 
       extraSpecialArgs = { inherit inputs; nixos-config = config; };
 
-      sharedModules = [ ./../home_manager ];
+      sharedModules = [ ./../../home_manager/shared ];
     };
 }

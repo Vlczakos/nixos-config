@@ -1,15 +1,14 @@
 {
-  inputs,
-  config,
-  pkgs,
   ...
 }:
-
 {
   imports = [
     ./hardware-configuration.nix
-  ];
 
+    ./../../modules/nixos/gui
+    ./../../modules/nixos/graphic_drivers/nvidia.nix
+    ./../../modules/nixos/shared
+  ];
 
   networking.hostName = "meduza"; # Define your hostname.
 
@@ -29,9 +28,6 @@
     autologinUser = "vlczak";
     autologinOnce = true;
   };
-
-  nvidia.enable = true;
-  gui.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

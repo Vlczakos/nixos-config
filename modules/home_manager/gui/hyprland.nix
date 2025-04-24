@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  nixos-config,
   ...
 }:
 let
@@ -140,7 +139,7 @@ let
     ''
   );
 in
-lib.mkIf nixos-config.gui.enable {
+{
   wayland.windowManager.hyprland = {
     enable = true;
 

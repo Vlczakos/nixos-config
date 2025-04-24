@@ -1,5 +1,5 @@
-{ lib, nixos-config, pkgs, ... }:
-lib.mkIf nixos-config.gui.enable {
+{ pkgs, ... }:
+{
   xdg = {
     enable = true;
     mime.enable = true;

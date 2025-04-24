@@ -18,14 +18,12 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/meduza/configuration.nix
-            ./modules/nixos
           ];
         };
         krakatice = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/krakatice/configuration.nix
-            ./modules/nixos
           ];
         };
       };

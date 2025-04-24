@@ -8,8 +8,6 @@
 
     shellAliases = {
       sysbuild = "nixos-rebuild switch --use-remote-sudo --verbose --flake /nixos-config";
-
-      code = "codium";
     };
 
     functions = {

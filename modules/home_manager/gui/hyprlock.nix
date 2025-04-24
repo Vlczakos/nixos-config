@@ -1,5 +1,5 @@
-{ lib, nixos-config, ... }:
-lib.mkIf nixos-config.gui.enable {
+{ ... }:
+{
   programs.hyprlock = {
     enable = true;
 

@@ -1,6 +1,6 @@
-{ lib, nixos-config, pkgs, ... }:
+{ pkgs, ... }:
 
-lib.mkIf nixos-config.gui.enable {
+{
   home.packages = with pkgs; [
     brave
     vesktop

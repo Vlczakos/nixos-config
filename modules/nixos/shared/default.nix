@@ -6,11 +6,8 @@
     ./bootloader.nix
     ./home_manager.nix
     ./locale.nix
-    ./nvidia.nix
     ./packages.nix
     ./shell.nix
-
-    ./gui
   ];
 
   nixpkgs.config.allowUnfree = true;

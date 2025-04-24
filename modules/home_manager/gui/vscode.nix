@@ -1,10 +1,12 @@
-{ lib, nixos-config, pkgs, ... }:
+{ pkgs, ... }:
 
-lib.mkIf nixos-config.gui.enable {
+{
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
   ];
+
+  programs.fish.shellAliases.code = "codium";
 
   programs.vscode = {
     enable = true;
