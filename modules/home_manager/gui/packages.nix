@@ -27,6 +27,7 @@ lib.mkIf nixos-config.gui.enable {
     swww
     grimblast
     hyprpolkitagent
+    dconf
   ];
 
   services.playerctld.enable = true;
