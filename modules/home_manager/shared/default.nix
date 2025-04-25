@@ -7,6 +7,7 @@
     ./btop.nix
     ./nh.nix
     ./git.nix
+    ./rbw.nix
   ];
 
   # Let Home Manager install and manage itself.
