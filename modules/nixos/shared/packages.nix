@@ -8,6 +8,7 @@
     usbutils
     tmux
     sshfs
+    ngrok
   ];
 
   programs.direnv.enable = true;
