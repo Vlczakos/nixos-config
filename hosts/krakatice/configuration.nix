@@ -30,10 +30,13 @@
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
-  services.autossh.sessions.oracle_tunnel = {
-    user = "vlczak";
-    extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 ubuntu@130.162.230.214";
-  };
+  services.autossh.sessions = [
+    {
+      name = "oracle-tunnel";
+      user = "vlczak";
+      extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 ubuntu@130.162.230.214";
+    }
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
