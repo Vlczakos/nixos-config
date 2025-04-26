@@ -7,7 +7,6 @@
     git
     usbutils
     sshfs
-    ngrok
   ];
 
   programs.direnv.enable = true;
