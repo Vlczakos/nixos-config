@@ -8,6 +8,7 @@
 
     ./../../modules/nixos/shared
     ./../../modules/nixos/servers/minecraft.nix
+    ./../../modules/nixos/servers/ssh.nix
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.
@@ -21,11 +22,13 @@
       "dialout"
       "minecraft"
     ];
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkv9uYBtQvd/Z/sWEJzXwbuo6IPE4iBbm2dIAXg1EtQ vlczak@meduza"
+    ];
     # packages = with pkgs; [ ];
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
-
-  services.openssh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

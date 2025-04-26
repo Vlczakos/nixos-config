@@ -6,7 +6,6 @@
     killall
     git
     usbutils
-    tmux
     sshfs
     ngrok
   ];
