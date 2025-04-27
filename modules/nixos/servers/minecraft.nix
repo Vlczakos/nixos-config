@@ -22,6 +22,9 @@
           spawn-protection = 0;
           server-port = 25565;
           max-players = 69;
+          simulation-distance = 8;
+          view-distance = 8;
+          white-list = true;
         };
       };
     };
