@@ -1,4 +1,6 @@
 {
+  pkgs,
+  lib,
   ...
 }:
 
@@ -35,9 +37,22 @@
       monitoringPort = 20000;
       name = "oracle-tunnel";
       user = "vlczak";
-      extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 -R 8080:localhost:8080 ubuntu@130.162.230.214";
+      extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 -R 8080:localhost:8080 -R 24455:localhost:24455 ubuntu@130.162.230.214";
     }
   ];
+
+  systemd.services.socat = {
+    description = "Socat UDP tunnel service";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      # Ujistěte se, že cesta k socat odpovídá – u NixOS bývá často /run/current-system/sw/bin/socat
+      ExecStart = "${lib.getExe pkgs.socat} TCP-LISTEN:24455,fork UDP:localhost:24454";
+      Restart = "always";
+      RestartSec = "10";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
