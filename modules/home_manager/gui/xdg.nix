@@ -9,6 +9,7 @@
         "inode/directory" = [ "thunar.desktop" ];
         "application/zip" = [ "org.gnome.FileRoller.desktop" ];
         "x-scheme-handler/terminal" = [ "kitty-open.desktop" ];
+        "text/plain" = [ "codium.desktop" ];
       };
     };
     portal = {
