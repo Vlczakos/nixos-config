@@ -46,7 +46,6 @@
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     serviceConfig = {
-      # Ujistěte se, že cesta k socat odpovídá – u NixOS bývá často /run/current-system/sw/bin/socat
       ExecStart = "${lib.getExe pkgs.socat} TCP-LISTEN:24455,fork UDP:localhost:24454";
       Restart = "always";
       RestartSec = "10";
