@@ -18,13 +18,14 @@
         serverProperties = {
           allow-flight = false;
           difficulty = "hard";
-          motd = "Top Minecraft Server :D";
+          motd = "Top Minecraft Server :D §b§d§f§d§b";
           spawn-protection = 0;
           server-port = 25565;
           max-players = 69;
           simulation-distance = 8;
           view-distance = 8;
           white-list = true;
+          hide-online-players = true;
         };
       };
     };
