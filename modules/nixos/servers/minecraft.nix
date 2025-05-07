@@ -37,6 +37,7 @@
     repo = "/srv/minecraft/server-backup";
     user = "minecraft";
     compression = "zstd";
+    encryption.mode = "none";
 
     prune.keep = {
       within = "2d";
