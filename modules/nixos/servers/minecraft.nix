@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
@@ -47,13 +47,13 @@
     startAt = [ "00:00" "06:00" "12:00" "18:00" ];
 
     preHook = ''
-      tmux -S /run/minecraft/server.sock send-keys "save-off" C-m
-      tmux -S /run/minecraft/server.sock send-keys "save-all" C-m
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-off" C-m
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-all" C-m
       sleep 10
     '';
 
     postHook = ''
-      tmux -S /run/minecraft/server.sock send-keys "save-on" C-m
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-on" C-m
     '';
   };
 }
