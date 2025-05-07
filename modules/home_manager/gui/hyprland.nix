@@ -266,8 +266,8 @@ in
         "$mainMod, B, exec, brave"
         "$mainMod, C, exec, codium"
         "$mainMod, P, exec, kitty ${lib.getExe pkgs.python3}"
-        # "$mainMod, O, exec, okular"
-        # "$mainMod, X, exec, xournalpp"
+        "$mainMod, O, exec, okular"
+        "$mainMod, X, exec, xournalpp"
 
         ", Print, exec, grimblast copy area --freeze"
         "CONTROL, Escape, exec, kitty btop"
