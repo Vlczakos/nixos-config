@@ -56,4 +56,6 @@
       ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-on" C-m
     '';
   };
+
+  environment.systemPackages = [ pkgs.ferium ];
 }
