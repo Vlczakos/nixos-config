@@ -19,6 +19,7 @@
       "networkmanager"
       "wheel"
       "dialout"
+      "plugdev"
     ];
     # packages = with pkgs; [ ];
   };
@@ -28,6 +29,10 @@
     autologinUser = "vlczak";
     autologinOnce = true;
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="plugdev"
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
