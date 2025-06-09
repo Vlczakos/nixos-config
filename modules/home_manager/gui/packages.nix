@@ -8,6 +8,7 @@
     kdePackages.okular
     xournalpp
     vlc
+    libreoffice-fresh
 
     (betaflight-configurator.override (
       prev: {
