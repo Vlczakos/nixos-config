@@ -11,6 +11,7 @@
     ./../../modules/nixos/shared
     ./../../modules/nixos/servers/minecraft.nix
     ./../../modules/nixos/servers/ssh.nix
+    ./../../modules/nixos/servers/web_server.nix
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.
