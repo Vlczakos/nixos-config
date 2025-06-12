@@ -39,7 +39,7 @@
       monitoringPort = 20000;
       name = "oracle-tunnel";
       user = "vlczak";
-      extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 -R 8080:localhost:8080 -R 24455:localhost:24455 ubuntu@130.162.230.214";
+      extraArguments = "-i ~/.ssh/id_ed25519_ssh_tunnel -N -R 25565:localhost:25565 -R 22222:localhost:22 -R 1234:localhost:80 -R 8080:localhost:8080 -R 24455:localhost:24455 ubuntu@130.162.230.214";
     }
   ];
 
