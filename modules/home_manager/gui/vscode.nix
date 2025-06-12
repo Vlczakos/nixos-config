@@ -18,13 +18,14 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
 
-      extensions = [
-        pkgs.vscode-extensions.jnoortheen.nix-ide
-        pkgs.vscode-extensions.rust-lang.rust-analyzer
-        pkgs.vscode-extensions.mkhl.direnv
-        pkgs.vscode-extensions.ms-python.python
-        pkgs.vscode-extensions.tamasfe.even-better-toml
-        pkgs.vscode-extensions.ms-vscode.live-server
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        mkhl.direnv
+        ms-python.python
+        tamasfe.even-better-toml
+        ms-vscode.live-server
+        bradlc.vscode-tailwindcss
       ];
 
       userSettings = {
