@@ -24,6 +24,7 @@
         pkgs.vscode-extensions.mkhl.direnv
         pkgs.vscode-extensions.ms-python.python
         pkgs.vscode-extensions.tamasfe.even-better-toml
+        pkgs.vscode-extensions.ms-vscode.live-server
       ];
 
       userSettings = {
