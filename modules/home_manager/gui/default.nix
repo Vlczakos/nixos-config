@@ -9,5 +9,6 @@
     ./vscode.nix
     ./waybar.nix
     ./dunst.nix
+    ./davinci_resolve.nix
   ];
 }

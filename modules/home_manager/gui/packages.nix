@@ -9,7 +9,7 @@
     xournalpp
     vlc
     libreoffice-fresh
-
+    
     (betaflight-configurator.override (
       prev: {
         nwjs = prev.nwjs.overrideAttrs {
