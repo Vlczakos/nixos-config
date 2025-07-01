@@ -26,6 +26,7 @@
           view-distance = 8;
           white-list = true;
           hide-online-players = true;
+          enable-command-block = false;
         };
       };
     };
