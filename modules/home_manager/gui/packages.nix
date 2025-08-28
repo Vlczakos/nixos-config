@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     brave
+    widevine-cdm
     vesktop
     prismlauncher
     kdePackages.okular
