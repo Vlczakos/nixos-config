@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./audio.nix
@@ -12,7 +12,12 @@
 
   nixpkgs.config.allowUnfree = true;
   services.gvfs.enable = true;
-  networking.networkmanager.enable = true;
+  networking.networkmanager = { 
+    enable = true;
+    plugins = [
+      pkgs.networkmanager-openvpn
+    ];
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
