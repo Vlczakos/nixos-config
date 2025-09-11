@@ -26,6 +26,7 @@
         tamasfe.even-better-toml
         ms-vscode.live-server
         bradlc.vscode-tailwindcss
+        james-yu.latex-workshop
       ];
 
       userSettings = {
