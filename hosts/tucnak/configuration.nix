@@ -9,6 +9,8 @@
     ./../../modules/nixos/gui
     
     ./../../modules/nixos/shared
+
+    ./../../modules/nixos/graphic_drivers/intel.nix
   ];
 
   networking.hostName = "tucnak"; # Define your hostname.
