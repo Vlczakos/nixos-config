@@ -31,6 +31,12 @@
             ./hosts/krakatice/configuration.nix
           ];
         };
+        tucnak = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/tucnak/configuration.nix
+          ];
+        };
       };
 
     };
