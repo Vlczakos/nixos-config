@@ -5,7 +5,6 @@
     brave
     widevine-cdm
     vesktop
-    prismlauncher
     kdePackages.okular
     xournalpp
     vlc
@@ -33,8 +32,4 @@
   ];
 
   services.playerctld.enable = true;
-
-  programs.mangohud = {
-    enable = true;
-  };
 }

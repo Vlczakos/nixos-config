@@ -7,6 +7,11 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/gui
+    
+    ./../../modules/nixos/gui/steam.nix
+    ./../../modules/nixos/gui/saleae-logic.nix
+    ./../../modules/nixos/gui/vmware.nix
+
     ./../../modules/nixos/graphic_drivers/nvidia.nix
     ./../../modules/nixos/shared
   ];

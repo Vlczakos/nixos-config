@@ -2,6 +2,9 @@
 {
   imports = [
     ./../../modules/home_manager/gui
+
+    ./../../modules/home_manager/gui/davinci_resolve.nix
+    ./../../modules/home_manager/gui/games.nix
   ];
 
   home.username = "vlczak";

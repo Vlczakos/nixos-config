@@ -1,14 +1,13 @@
 { ... }:
 {
   imports = [
-    ./packages.nix
-    ./hyprland.nix
-    ./hyprlock.nix
-    ./xdg.nix
-    ./themes.nix
-    ./vscode.nix
-    ./waybar.nix
-    ./dunst.nix
-    ./davinci_resolve.nix
+    ./default/packages.nix
+    ./default/hyprland.nix
+    ./default/hyprlock.nix
+    ./default/xdg.nix
+    ./default/themes.nix
+    ./default/vscode.nix
+    ./default/waybar.nix
+    ./default/dunst.nix
   ];
 }
