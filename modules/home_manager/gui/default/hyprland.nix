@@ -166,7 +166,6 @@ in
 
       exec = [
         "hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}"
-        "swww img ~/Pictures/wallpapers/nix-right.png --transition-step 4 --transition-fps 60"
       ];
 
       exec-once = [
