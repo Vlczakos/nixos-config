@@ -336,6 +336,21 @@ in
         ", XF86AudioRaiseVolume, exec, ${volume_script} i"
       ];
     };
+
+ 
+    extraConfig = ''
+      bind = $mainMod, delete, exec, hyprctl dispatch dpms off
+      bind = $mainMod, delete, submap, cheat
+
+      submap = cheat
+      bind =  , mouse:272, exec, hyprctl dispatch dpms on
+      bindr = , mouse:272, exec, hyprctl dispatch dpms off
+
+      bind = , delete, exec, hyprctl dispatch dpms on
+      bind = , delete, submap, reset
+      bind = , catchall, exec, 
+      submap = reset
+    '';
   };
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
