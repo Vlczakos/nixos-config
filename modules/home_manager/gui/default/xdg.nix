@@ -14,7 +14,7 @@
     };
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk];
       configPackages = [pkgs.hyprland];
     };
     configFile."mimeapps.list".force = true;
