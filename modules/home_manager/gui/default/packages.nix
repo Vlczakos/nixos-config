@@ -9,6 +9,7 @@
     xournalpp
     vlc
     libreoffice-fresh
+    deskflow
     
     (betaflight-configurator.override (
       prev: {
