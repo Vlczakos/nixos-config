@@ -9,7 +9,7 @@
     xournalpp
     vlc
     libreoffice-fresh
-    deskflow
+    lan-mouse
     
     (betaflight-configurator.override (
       prev: {
