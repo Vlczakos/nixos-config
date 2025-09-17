@@ -127,13 +127,13 @@ let
   );
   keyboard_switch_script = lib.getExe (
     pkgs.writeShellScriptBin "keyboard_toggle_script" ''
-      keyboards=$(hyprctl devices | grep -A6 "Keyboard at" | grep -B5 "main: yes" | awk 'NR % 6 == 1' | awk '{print $1}')
+      keyboards=$(hyprctl devices | grep -A7 "Keyboard at" | grep -B6 "main: yes" | awk 'NR % 8 == 1' | awk '{print $1}')
 
       for kbd in $keyboards; do
           hyprctl switchxkblayout "$kbd" next
       done
 
-      active=$(hyprctl devices | grep -A2 "$keyboards" | grep "active keymap:" | awk '{$1=""; $2=""; sub(/^  */, ""); print}')
+      active=$(hyprctl devices | grep -A3 "$keyboards" | grep "active keymap:" | awk '{$1=""; $2=""; sub(/^  */, ""); print}')
 
       dunstify -h string:x-dunst-stack-tag:keyboard_layout -t 1000 "$active"
     ''
