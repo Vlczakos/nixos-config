@@ -238,7 +238,9 @@ in
         }
       ];
 
-      gestures.workspace_swipe = "on";
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       misc = {
         disable_hyprland_logo = true;
