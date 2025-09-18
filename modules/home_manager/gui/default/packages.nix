@@ -9,7 +9,7 @@
     xournalpp
     vlc
     libreoffice-fresh
-    lan-mouse
+    gimp
     
     (betaflight-configurator.override (
       prev: {
