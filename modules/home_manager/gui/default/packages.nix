@@ -10,6 +10,7 @@
     vlc
     libreoffice-fresh
     gimp
+    bottles
     
     (betaflight-configurator.override (
       prev: {
