@@ -10,7 +10,7 @@
     vlc
     libreoffice-fresh
     gimp
-    bottles
+    (bottles.override { removeWarningPopup = true; })
     
     (betaflight-configurator.override (
       prev: {
