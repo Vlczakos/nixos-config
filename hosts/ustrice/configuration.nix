@@ -9,14 +9,14 @@
     ./../../modules/nixos/gui
     
     ./../../modules/nixos/gui/steam.nix
-    ./../../modules/nixos/gui/saleae-logic.nix
-    ./../../modules/nixos/gui/vmware.nix
+    # ./../../modules/nixos/gui/saleae-logic.nix
+    # ./../../modules/nixos/gui/vmware.nix
 
-    ./../../modules/nixos/graphic_drivers/nvidia-prime.nix
+    ./../../modules/nixos/graphic_drivers/nvidia.nix
     ./../../modules/nixos/shared
   ];
 
-  networking.hostName = "meduza"; # Define your hostname.
+  networking.hostName = "ustrice"; # Define your hostname.
 
   users.users.vlczak = {
     isNormalUser = true;
