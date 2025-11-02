@@ -45,6 +45,7 @@
         editor.minimap.enabled = false;
         chat.commandCenter.enabled = false;
         workbench.activityBar.location = "default";
+        git.autofetch = true;
       };
     };
   };
