@@ -14,6 +14,8 @@
 
     ./../../modules/nixos/graphic_drivers/nvidia.nix
     ./../../modules/nixos/shared
+
+    ./../../modules/nixos/servers/sunshine.nix
   ];
 
   networking.hostName = "ustrice"; # Define your hostname.

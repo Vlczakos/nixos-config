@@ -11,6 +11,7 @@
     libreoffice-fresh
     gimp
     (bottles.override { removeWarningPopup = true; })
+    moonlight-qt
     
     (betaflight-configurator.override (
       prev: {
