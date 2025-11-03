@@ -8,6 +8,7 @@
     ./locale.nix
     ./packages.nix
     ./shell.nix
+    ./docker.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
