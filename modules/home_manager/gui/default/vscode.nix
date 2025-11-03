@@ -27,6 +27,7 @@
         ms-vscode.live-server
         bradlc.vscode-tailwindcss
         james-yu.latex-workshop
+        ms-azuretools.vscode-docker
       ];
 
       userSettings = {
