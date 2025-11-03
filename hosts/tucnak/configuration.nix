@@ -33,6 +33,10 @@
     autologinOnce = true;
   };
 
+  # disable tpm2 - not used and startup service timed out several times 
+  systemd.tpm2.enable = false;
+  boot.initrd.systemd.tpm2.enable = false;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
