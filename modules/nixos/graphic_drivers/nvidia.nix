@@ -35,4 +35,10 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia_drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 }

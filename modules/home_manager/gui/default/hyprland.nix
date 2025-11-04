@@ -152,11 +152,8 @@ in
 
     settings = {
       env = [
-        "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "QT_QPA_PLATFORM,wayland"
-        "GBM_BACKEND,nvidia_drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_DRM_NO_ATOMIC,1"
       ];
 
