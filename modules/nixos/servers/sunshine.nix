@@ -1,9 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services.sunshine = {
     enable = true;
     openFirewall = true;
-
+    capSysAdmin = true;
+    
     # applications = {
     #   apps = [
     #     {
@@ -20,5 +21,7 @@
     #   ];
     # }
     # ;
+
+    package = pkgs.sunshine.override { cudaSupport = true; };
   };
 }

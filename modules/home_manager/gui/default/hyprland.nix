@@ -238,6 +238,10 @@ in
           name = "glorious-model-o-wireless-1";
           sensitivity = -1.0;
         }
+        {
+          name = "mouse-passthrough";
+          sensitivity = -1.0;
+        }
       ];
 
       gesture = [
