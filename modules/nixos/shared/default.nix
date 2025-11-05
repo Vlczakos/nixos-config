@@ -30,8 +30,8 @@
     "/share/applications"
   ];
 
-  services.logind = {
-    lidSwitch = "ignore";
-    powerKey = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandlePowerKey = "ignore";
   };
 }

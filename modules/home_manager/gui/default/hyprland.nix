@@ -158,9 +158,6 @@ in
       ];
 
       monitor = [
-        "eDP-1,1920x1080@300,0x0,1"
-        "HDMI-A-3,1920x1080@60.00Hz,-1920x0,1"
-        "DP-2,3440x1440@175.00Hz,0x0,1"
         ",preferred,auto-up,1"
       ];
 
@@ -201,7 +198,7 @@ in
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
-        allow_tearing = false;
+        allow_tearing = true;
       };
 
       decoration = {
@@ -252,16 +249,6 @@ in
         vfr = true;
       };
 
-      windowrulev2 = [
-        "suppressevent maximize, class:.*"
-        "opacity 0.0 override,title:Wine System Tray"
-        "noanim,class:title:Wine System Tray"
-        "noinitialfocus,title:Wine System Tray"
-        "maxsize 1 1,title:Wine System Tray"
-        "noblur,title:Wine System Tray"
-        "monitor eDP-1, class:worldoftanks.exe"
-      ];
-
       "$mainMod" = "SUPER";
 
       bind = [
@@ -277,6 +264,7 @@ in
         "CONTROL, Escape, exec, kitty btop"
         "CONTROL+SHIFT, Escape, exec, killall .waybar-wrapped || waybar"
         "$mainMod, Q, killactive"
+        "$mainMod, M, fullscreen"
         "$mainMod, F, togglefloating"
         "$mainMod, S, togglesplit"
         "$mainMod, Escape, exit"
@@ -352,8 +340,8 @@ in
       bind =  , mouse:272, exec, hyprctl dispatch dpms on
       bindr = , mouse:272, exec, hyprctl dispatch dpms off
 
-      bind = , delete, exec, hyprctl dispatch dpms on
-      bind = , delete, submap, reset
+      bind = $mainMod, delete, exec, hyprctl dispatch dpms on
+      bind = $mainMod, delete, submap, reset
       bind = , catchall, exec, 
       submap = reset
     '';
