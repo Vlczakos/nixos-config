@@ -158,6 +158,7 @@ in
       ];
 
       monitor = [
+        "DP-2,3440x1440@175.00Hz,0x0,1"
         ",preferred,auto-up,1"
       ];
 
@@ -231,6 +232,10 @@ in
         }
         {
           name = "glorious-model-o-wireless-1";
+          sensitivity = -1.0;
+        }
+        {
+          name = "mouse-passthrough";
           sensitivity = -1.0;
         }
       ];
