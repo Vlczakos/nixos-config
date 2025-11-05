@@ -158,7 +158,6 @@ in
       ];
 
       monitor = [
-        "DP-2,3440x1440@175.00Hz,0x0,1"
         ",preferred,auto-up,1"
       ];
 

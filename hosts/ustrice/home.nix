@@ -12,6 +12,7 @@
 
   wayland.windowManager.hyprland.settings.monitor = [
     "HDMI-A-3,1920x1080@60.00Hz,0x0,1"
+    "DP-2,3440x1440@175.00Hz,0x0,1"
   ];
 
   # This value determines the Home Manager release that your configuration is
