@@ -19,10 +19,10 @@
         modules-right = [
           "tray"
           # "bluetooth"format_source
-          "pulseaudio"
-          "backlight"
           # "custom/power"
           "battery"
+          "backlight"
+          "pulseaudio"
         ];
 
 
@@ -163,7 +163,7 @@
       }
       #clock,
       #workspaces,
-      #battery {
+      #pulseaudio {
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
         margin-right: 5px;
