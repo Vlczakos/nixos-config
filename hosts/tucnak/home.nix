@@ -7,6 +7,10 @@
   home.username = "vlczak";
   home.homeDirectory = "/home/vlczak";
 
+  wayland.windowManager.hyprland.settings.monitor = [
+    "eDP-1,1920x1080@60,0x0,1"
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
