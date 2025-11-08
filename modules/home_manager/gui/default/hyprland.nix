@@ -263,6 +263,7 @@ in
         ", Print, exec, grimblast copy area --freeze"
         "CONTROL, Escape, exec, kitty btop"
         "CONTROL+SHIFT, Escape, exec, killall .waybar-wrapped || waybar"
+        "$mainMod, J, exec, ${pkgs.kitty}/bin/kitten panel --edge=center --layer=overlay --focus-policy=exclusive -o background_opacity=1.0 -o font_size=20 ${lib.getExe pkgs.cmatrix} -u 6 -a -b -s"
         "$mainMod, Q, killactive"
         "$mainMod, M, fullscreen"
         "$mainMod, F, togglefloating"
