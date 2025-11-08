@@ -33,10 +33,7 @@
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
-  services.getty = {
-    autologinUser = "vlczak";
-    autologinOnce = true;
-  };
+  boot.loader.efi.efiSysMountPoint = "/efi";
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="plugdev"
