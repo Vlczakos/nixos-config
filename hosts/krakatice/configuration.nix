@@ -66,6 +66,11 @@
         prefixLength = 24;
       }];
     };
+
+    firewall = {
+      allowedTCPPorts = [ 8080 25565 ];
+      allowedUDPPorts = [ 24454 ];
+    };
   };
 
 
