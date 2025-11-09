@@ -56,6 +56,13 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+  networking.interfaces.eno1 = {
+    ipv4.addresses = [{
+      address = "192.168.1.90";
+      prefixLength = 24;
+    }];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -37,12 +37,12 @@
             ./hosts/tucnak/configuration.nix
           ];
         };
-	ustrice = nixpkgs.lib.nixosSystem {
-	  specialArgs = { inherit inputs; };
-	  modules = [
-	    ./hosts/ustrice/configuration.nix
-	  ];
-	};
+        ustrice = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/ustrice/configuration.nix
+          ];
+        };
       };
 
     };
