@@ -56,12 +56,18 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  networking.interfaces.eno1 = {
-    ipv4.addresses = [{
-      address = "192.168.1.90";
-      prefixLength = 24;
-    }];
+  networking = {
+    defaultGateway = "192.168.1.1";
+    nameservers = [ "8.8.8.8" ];
+
+    interfaces.eno1 = {
+      ipv4.addresses = [{
+        address = "192.168.1.90";
+        prefixLength = 24;
+      }];
+    };
   };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
