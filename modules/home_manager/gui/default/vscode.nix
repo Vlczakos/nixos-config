@@ -37,6 +37,7 @@ in
         ms-azuretools.vscode-docker
         theqtcompany.qt-qml
         theqtcompany.qt-core
+        slint.slint
       ];
 
       userSettings = {
