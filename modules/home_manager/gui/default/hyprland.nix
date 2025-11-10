@@ -332,7 +332,6 @@ in
       ];
     };
 
- 
     extraConfig = ''
       bind = $mainMod, delete, exec, hyprctl dispatch dpms off
       bind = $mainMod, delete, submap, cheat

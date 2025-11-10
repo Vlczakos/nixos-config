@@ -10,6 +10,7 @@
     vlc
     libreoffice-fresh
     gimp
+    qimgv
     (bottles.override { removeWarningPopup = true; })
     moonlight-qt
     

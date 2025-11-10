@@ -96,7 +96,8 @@
       "inputs": {
         "home_manager": "home_manager",
         "nix-minecraft": "nix-minecraft",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "vscode-extensions": "vscode-extensions"
       }
     },
     "systems": {
@@ -111,6 +112,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vscode-extensions": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762740031,
+        "narHash": "sha256-tvUa9nvNerFarHlsw4sipFVWOk9DhHIa+uTW7C0tcxw=",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "rev": "d09b10414e1a10f7f9a9c9ec01d689d9d23d3f9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
         "type": "github"
       }
     }

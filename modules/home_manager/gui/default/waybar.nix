@@ -18,7 +18,7 @@
         ];
         modules-right = [
           "tray"
-          # "bluetooth"format_source
+          # "bluetooth"
           # "custom/power"
           "battery"
           "backlight"
@@ -26,48 +26,53 @@
         ];
 
 
-        "tray" = {
+        tray = {
           icon-size = 19;
           spacing = 5;
           rotate = 0;
         };
 
-        "clock" = {
-          "format" = "{:%H:%M}";
-          "format-alt" = "{:%d. %m.  %H:%M}";
+        clock = {
+          format = "{:%H:%M}";
+          format-alt = "{:%d. %m.  %H:%M}";
           tooltip = false;
         };
 
-        "pulseaudio" = {
-          "format" = "   ";
-          "format-muted" = "   ";
-          "tooltip-format" = "{desc} - {volume}%";
-          "on-click" = "pavucontrol";
-          "on-scroll-up" = "pamixer --allow-boost -i 1";
-          "on-scroll-down" = "pamixer --allow-boost -d 1";
-          "on-click-middle" = "pamixer -t";
+        pulseaudio = {
+          format = "{icon}";
+          format-muted = "";
+          format-icons = [
+            ""
+            ""
+            "" "" "" "" "" "" "" ""
+          ];
+          tooltip-format = "{desc} - {volume}%";
+          on-click = "pavucontrol";
+          on-scroll-up = "pamixer --allow-boost -i 1";
+          on-scroll-down = "pamixer --allow-boost -d 1";
+          on-click-middle = "pamixer -t";
         };
 
-        "backlight" = {
-          "device" = "intel_backlight";
-          "format" = "{icon} ";
-          "tooltip-format" = "{percent}%";
-          "format-icons" = [
+        backlight = {
+          device = "intel_backlight";
+          format = "{icon}";
+          tooltip-format = "{percent}%";
+          format-icons = [
             "󰃞"
             "󰃟"
             "󰃠"
           ];
-          "on-scroll-up" = "brightnessctl set +5%";
-          "on-scroll-down" = "brightnessctl set 5%-";
-          "on-click-middle" = "brightnessctl set 0";
+          on-scroll-up = "brightnessctl set +5%";
+          on-scroll-down = "brightnessctl set 5%-";
+          on-click-middle = "brightnessctl set 0";
         };
 
-        "battery" = {
-          "interval" = 1;
-          "format" = " {icon}";
-          "format-charging" = " 󰂄";
-          "tooltip-format" = "{capacity}%";
-          "format-icons" = [
+        battery = {
+          interval = 1;
+          format = "{icon}";
+          format-charging = "󰂄";
+          tooltip-format = "{capacity}%";
+          format-icons = [
             "󰂃"
             "󰁺"
             "󰁻"
@@ -175,7 +180,7 @@
       }
 
       #clock,
-      #battery {
+      #pulseaudio {
         padding-right: 10px;
       }
 

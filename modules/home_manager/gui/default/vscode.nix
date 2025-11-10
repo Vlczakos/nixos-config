@@ -1,5 +1,12 @@
-{ pkgs, ... }:
-
+{
+  pkgs,
+  inputs,
+  nixos-config,
+  ...
+}:
+let
+  extensions = inputs.vscode-extensions.extensions.${nixos-config.nixpkgs.hostPlatform.system};
+in
 {
   home.packages = with pkgs; [
     nixd
@@ -18,7 +25,7 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
 
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with extensions.vscode-marketplace; [
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
         mkhl.direnv
@@ -28,6 +35,8 @@
         bradlc.vscode-tailwindcss
         james-yu.latex-workshop
         ms-azuretools.vscode-docker
+        theqtcompany.qt-qml
+        theqtcompany.qt-core
       ];
 
       userSettings = {
@@ -47,6 +56,11 @@
         chat.commandCenter.enabled = false;
         workbench.activityBar.location = "default";
         git.autofetch = true;
+        qt-qml.qmlls.useQmlImportPathEnvVar = true;
+        qt-qml.qmlls.customExePath = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+        qt-qml.doNotAskForQmllsDownload = true;
+        editor.tabSize = 2;
+        
       };
     };
   };
