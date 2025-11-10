@@ -35,6 +35,20 @@
 
   boot.loader.efi.efiSysMountPoint = "/efi";
 
+  networking = {
+    defaultGateway = "192.168.1.1";
+    nameservers = [ "8.8.8.8" ];
+    
+    interfaces.enp5s0 = { 
+      wakeOnLan.enable = true; 
+    
+      ipv4.addresses = [{
+        address = "192.168.1.80";
+        prefixLength = 24;
+      }];
+    };
+  };
+
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="plugdev"
   '';  
