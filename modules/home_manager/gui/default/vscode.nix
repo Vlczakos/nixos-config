@@ -1,11 +1,10 @@
 {
   pkgs,
   inputs,
-  nixos-config,
   ...
 }:
 let
-  extensions = inputs.vscode-extensions.extensions.${nixos-config.nixpkgs.hostPlatform.system};
+  extensions = inputs.vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in
 {
   home.packages = with pkgs; [
@@ -25,7 +24,7 @@ in
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
 
-      extensions = with extensions.vscode-marketplace; [
+      extensions = with extensions; [
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
         mkhl.direnv
@@ -35,8 +34,6 @@ in
         bradlc.vscode-tailwindcss
         james-yu.latex-workshop
         ms-azuretools.vscode-docker
-        theqtcompany.qt-qml
-        theqtcompany.qt-core
         slint.slint
       ];
 
@@ -57,9 +54,6 @@ in
         chat.commandCenter.enabled = false;
         workbench.activityBar.location = "default";
         git.autofetch = true;
-        qt-qml.qmlls.useQmlImportPathEnvVar = true;
-        qt-qml.qmlls.customExePath = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
-        qt-qml.doNotAskForQmllsDownload = true;
         slint.lspBinaryPath = pkgs.lib.getExe pkgs.slint-lsp;
         "[rust]".editor.defaultFormatter = "rust-lang.rust-analyzer";
       };
