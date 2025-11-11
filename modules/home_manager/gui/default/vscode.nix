@@ -60,8 +60,8 @@ in
         qt-qml.qmlls.useQmlImportPathEnvVar = true;
         qt-qml.qmlls.customExePath = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         qt-qml.doNotAskForQmllsDownload = true;
-        editor.tabSize = 2;
-        
+        slint.lspBinaryPath = pkgs.lib.getExe pkgs.slint-lsp;
+        "[rust]".editor.defaultFormatter = "rust-lang.rust-analyzer";
       };
     };
   };
