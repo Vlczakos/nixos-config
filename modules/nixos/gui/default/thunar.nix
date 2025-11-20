@@ -15,6 +15,7 @@ in
 {
   environment.systemPackages = [
     thunarWithPlugins
+    pkgs.file-roller
   ];
 
   services.dbus.packages = [
@@ -26,5 +27,4 @@ in
   ];
 
   programs.xfconf.enable = true;
-  programs.file-roller.enable = true;
 }
