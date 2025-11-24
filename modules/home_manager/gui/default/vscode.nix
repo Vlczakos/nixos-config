@@ -56,6 +56,8 @@ in
         git.autofetch = true;
         slint.lspBinaryPath = pkgs.lib.getExe pkgs.slint-lsp;
         "[rust]".editor.defaultFormatter = "rust-lang.rust-analyzer";
+        latex-workshop.formatting.latex = "tex-fmt";
+        "[latex]".editor.wordWrap = "on";
       };
     };
   };
