@@ -33,6 +33,22 @@
     autologinOnce = true;
   };
 
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.20.30.100/24" ];
+      privateKeyFile = "/etc/wg-keys/private";
+
+      peers = [
+        {
+          publicKey = "SfLorxq/7wKXr+NQ498zcPFYr0UrraolfITXJKcDmlM=";
+          allowedIPs = [ "10.20.30.0/24" ];
+          endpoint = "vlcak.com:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
   # disable tpm2 - not used and startup service timed out several times 
   systemd.tpm2.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
