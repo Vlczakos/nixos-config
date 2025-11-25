@@ -71,6 +71,10 @@
           publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo=";
           allowedIPs = [ "10.20.30.80/32" ];
         }
+        {
+          publicKey = "Fp6fCOgPSeTKZmg/2QT5zG33NzVJfHrl4NOd2fVqfw8=";
+          allowedIPs = [ "10.20.30.100/32" ];
+        }
       ];
     };
   };
