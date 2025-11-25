@@ -18,6 +18,8 @@
       fsType = "ext4";
     };
 
+  boot.loader.efi.efiSysMountPoint = "/efi";
+  
   fileSystems."/efi" =
     { device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";

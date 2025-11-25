@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/gui
-    
+
     ./../../modules/nixos/gui/steam.nix
     # ./../../modules/nixos/gui/saleae-logic.nix
     # ./../../modules/nixos/gui/vmware.nix
@@ -33,25 +33,45 @@
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
-  boot.loader.efi.efiSysMountPoint = "/efi";
+  networking.networkmanager.ensureProfiles.profiles = {
+    "static-ethernet" = {
+      connection = {
+        id = "static-ethernet";
+        type = "ethernet";
+        interface-name = "enp5s0";
+        autoconnect = true;
+      };
 
-  networking = {
-    defaultGateway = "192.168.1.1";
-    nameservers = [ "8.8.8.8" ];
-    
-    interfaces.enp5s0 = { 
-      wakeOnLan.enable = true; 
-    
-      ipv4.addresses = [{
-        address = "192.168.1.80";
-        prefixLength = 24;
-      }];
+      ipv4 = {
+        method = "manual";
+        addresses = "192.168.1.80/24";
+        gateway = "192.168.1.1";
+        dns = "8.8.8.8";
+      };
+    };
+  };
+
+  networking.interfaces.enp5s0.wakeOnLan.enable = true;
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.20.30.80/24" ];
+      privateKeyFile = "/etc/wg-keys/private";
+
+      peers = [
+        {
+          publicKey = "SfLorxq/7wKXr+NQ498zcPFYr0UrraolfITXJKcDmlM=";
+          allowedIPs = [ "10.20.30.0/24" ];
+          endpoint = "192.168.1.90:51820";
+          persistentKeepalive = 25;
+        }
+      ];
     };
   };
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="plugdev"
-  '';  
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

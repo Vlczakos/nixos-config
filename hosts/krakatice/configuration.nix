@@ -36,22 +36,44 @@
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
   networking = {
-    defaultGateway = "192.168.1.1";
-    nameservers = [ "8.8.8.8" ];
-
-    interfaces.eno1 = {
-      ipv4.addresses = [{
-        address = "192.168.1.90";
-        prefixLength = 24;
-      }];
-    };
-
     firewall = {
       allowedTCPPorts = [ 8080 25565 ];
-      allowedUDPPorts = [ 24454 ];
+      allowedUDPPorts = [ 24454 51820 ];
     };
   };
 
+  networking.networkmanager.ensureProfiles.profiles = {
+    "static-ethernet" = {
+      connection = {
+        id = "static-ethernet";
+        type = "ethernet";
+        interface-name = "eno1";
+        autoconnect = true;
+      };
+
+      ipv4 = {
+        method = "manual";
+        addresses = "192.168.1.90/24";
+        gateway = "192.168.1.1";
+        dns = "8.8.8.8";
+      };
+    };
+  };
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.20.30.90/24" ];
+      listenPort = 51820;
+      privateKeyFile = "/etc/wg-keys/private";
+
+      peers = [
+        {
+          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo=";
+          allowedIPs = [ "10.20.30.80/32" ];
+        }
+      ];
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
