@@ -15,6 +15,7 @@
     ./../../modules/nixos/graphic_drivers/nvidia.nix
     ./../../modules/nixos/shared
 
+    ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/sunshine.nix
   ];
 
@@ -28,6 +29,11 @@
       "wheel"
       "dialout"
       "plugdev"
+    ];
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEz0M1anq7Uq32EiIQOG9NLkomyS7q7/46yHQZ7lbMcz"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMM2ILrcyKxtrmDh80B5VHkzIyhPe/se19LAmsKklGvv vlczak@tucnak"
     ];
     # packages = with pkgs; [ ];
   };
