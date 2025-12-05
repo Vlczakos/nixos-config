@@ -140,8 +140,16 @@ let
       dunstify -h string:x-dunst-stack-tag:keyboard_layout -t 1000 "$active"
     ''
   );
+  headless_hyprland_script = pkgs.writeShellScriptBin "HeadlessHyprland" ''
+    Hyprland |
+    $(sleep 5 && hyprctl --instance 0 dispatch exec 'hyprctl output create headless && hyprctl keyword monitor HEADLESS-2,1920x1080@60,auto-up,1')
+  '';
 in
 {
+  home.packages = [
+    headless_hyprland_script
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 
