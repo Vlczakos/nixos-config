@@ -27,6 +27,7 @@
           white-list = true;
           hide-online-players = true;
           enable-command-block = true;
+          pause-when-empty-seconds = -1;
         };
       };
     };
