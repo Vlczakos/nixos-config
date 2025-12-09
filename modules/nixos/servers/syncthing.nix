@@ -3,7 +3,6 @@
   services.syncthing = {
     enable = true;
     dataDir = "/etc/syncthing";
-    user = "yourUser";
 
     settings = {
       devices = {
