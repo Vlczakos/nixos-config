@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/shared
-    
+
     ./../../modules/nixos/servers/minecraft.nix
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/web_server.nix
@@ -86,11 +86,15 @@
   };
 
   services.syncthing.settings.folders = {
-    "/syncthing/test_sync" = {
+    "/sync/test_sync" = {
       id = "test_sync";
       devices = [ "tucnak" ];
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /sync/test_sync 0770 vlczak syncthing -"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

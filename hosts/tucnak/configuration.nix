@@ -1,5 +1,5 @@
 {
-  # pkgs,
+  pkgs,
   ...
 }:
 {
@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/gui
-    
+
     ./../../modules/nixos/shared
 
     ./../../modules/nixos/graphic_drivers/intel.nix
@@ -52,13 +52,18 @@
   };
 
   services.syncthing.settings.folders = {
-    "/home/vlczak/test_sync" = {
+    "/sync/test_sync" = {
       id = "test_sync";
       devices = [ "krakatice" ];
     };
   };
 
-  # disable tpm2 - not used and startup service timed out several times 
+  systemd.tmpfiles.rules = [
+    "d /sync/test_sync 0770 vlczak syncthing -"
+    "L /home/vlczak/test_sync - - - - /sync/test_sync"
+  ];
+
+  # disable tpm2 - not used and startup service timed out several times
   systemd.tpm2.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
 
