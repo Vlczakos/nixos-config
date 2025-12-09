@@ -9,9 +9,11 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/shared
+    
     ./../../modules/nixos/servers/minecraft.nix
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/web_server.nix
+    ./../../modules/nixos/servers/syncthing.nix
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.
@@ -80,6 +82,13 @@
           allowedIPs = [ "10.20.30.101/32" ];
         }
       ];
+    };
+  };
+
+  services.syncthing.settings.folders = {
+    "/syncthing/test_sync" = {
+      id = "test_sync";
+      devices = [ "tucnak" ];
     };
   };
 

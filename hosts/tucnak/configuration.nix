@@ -11,6 +11,8 @@
     ./../../modules/nixos/shared
 
     ./../../modules/nixos/graphic_drivers/intel.nix
+
+    ./../../modules/nixos/servers/syncthing.nix
   ];
 
   networking.hostName = "tucnak"; # Define your hostname.
@@ -46,6 +48,13 @@
           persistentKeepalive = 25;
         }
       ];
+    };
+  };
+
+  services.syncthing.settings.folders = {
+    "/home/vlczak/test_sync" = {
+      id = "test_sync";
+      devices = [ "krakatice" ];
     };
   };
 
