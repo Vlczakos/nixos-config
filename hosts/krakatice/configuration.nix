@@ -95,15 +95,25 @@
     openDefaultPorts = true;
 
     settings.folders = {
-      "/sync/test_sync" = {
-        id = "test_sync";
-        devices = [ "tucnak" ];
+      "/sync/vlczak-documents" = {
+        id = "vlczak-documents";
+        devices = [ "krakatice" ];
+      };
+      "/sync/vlczak-pictures" = {
+        id = "vlczak-pictures";
+        devices = [ "krakatice" ];
+      };
+      "/sync/vlczak-programming" = {
+        id = "vlczak-programming";
+        devices = [ "krakatice" ];
       };
     };
   };
 
   systemd.tmpfiles.rules = [
-    "d /sync/test_sync 0770 vlczak syncthing -"
+    "d /sync/vlczak-documents 0770 vlczak syncthing -"
+    "d /sync/vlczak-pictures 0770 vlczak syncthing -"
+    "d /sync/vlczak-programming 0770 vlczak syncthing -"
   ];
 
   # This value determines the NixOS release from which the default
