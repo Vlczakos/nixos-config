@@ -39,8 +39,14 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 8080 25565 ];
-      allowedUDPPorts = [ 24454 51820 ];
+      allowedTCPPorts = [
+        8080
+        25565
+      ];
+      allowedUDPPorts = [
+        24454
+        51820
+      ];
     };
   };
 
@@ -85,10 +91,14 @@
     };
   };
 
-  services.syncthing.settings.folders = {
-    "/sync/test_sync" = {
-      id = "test_sync";
-      devices = [ "tucnak" ];
+  services.syncthing = {
+    openDefaultPorts = true;
+
+    settings.folders = {
+      "/sync/test_sync" = {
+        id = "test_sync";
+        devices = [ "tucnak" ];
+      };
     };
   };
 
