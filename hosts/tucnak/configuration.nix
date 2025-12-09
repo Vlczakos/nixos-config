@@ -11,8 +11,6 @@
     ./../../modules/nixos/shared
 
     ./../../modules/nixos/graphic_drivers/intel.nix
-
-    ./../../modules/nixos/servers/syncthing.nix
   ];
 
   networking.hostName = "tucnak"; # Define your hostname.
@@ -50,31 +48,6 @@
       ];
     };
   };
-
-  services.syncthing.settings.folders = {
-    "/sync/vlczak-documents" = {
-      id = "vlczak-documents";
-      devices = [ "krakatice" ];
-    };
-    "/sync/vlczak-pictures" = {
-      id = "vlczak-pictures";
-      devices = [ "krakatice" ];
-    };
-    "/sync/vlczak-programming" = {
-      id = "vlczak-programming";
-      devices = [ "krakatice" ];
-    };
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /sync/vlczak-documents 0770 vlczak syncthing -"
-    "d /sync/vlczak-pictures 0770 vlczak syncthing -"
-    "d /sync/vlczak-programming 0770 vlczak syncthing -"
-
-    "L /home/vlczak/Documents - - - - /sync/vlczak-documents"
-    "L /home/vlczak/Pictures - - - - /sync/vlczak-pictures"
-    "L /home/vlczak/programming - - - - /sync/vlczak-programming"
-  ];
 
   # disable tpm2 - not used and startup service timed out several times
   systemd.tpm2.enable = false;

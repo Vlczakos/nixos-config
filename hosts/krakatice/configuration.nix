@@ -13,7 +13,6 @@
     ./../../modules/nixos/servers/minecraft.nix
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/web_server.nix
-    ./../../modules/nixos/servers/syncthing.nix
   ];
 
   networking.hostName = "krakatice"; # Define your hostname.
@@ -90,31 +89,6 @@
       ];
     };
   };
-
-  services.syncthing = {
-    openDefaultPorts = true;
-
-    settings.folders = {
-      "/sync/vlczak-documents" = {
-        id = "vlczak-documents";
-        devices = [ "nothing2A" "tucnak" ];
-      };
-      "/sync/vlczak-pictures" = {
-        id = "vlczak-pictures";
-        devices = [ "nothing2A" "tucnak" ];
-      };
-      "/sync/vlczak-programming" = {
-        id = "vlczak-programming";
-        devices = [ "nothing2A" "tucnak" ];
-      };
-    };
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /sync/vlczak-documents 0770 vlczak syncthing -"
-    "d /sync/vlczak-pictures 0770 vlczak syncthing -"
-    "d /sync/vlczak-programming 0770 vlczak syncthing -"
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

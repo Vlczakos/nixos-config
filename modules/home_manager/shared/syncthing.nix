@@ -2,9 +2,24 @@
 {
   services.syncthing = {
     enable = true;
-    dataDir = "/etc/syncthing";
+    tray.enable = true;
 
     settings = {
+      folders = {
+        "~/Documents" = {
+          id = "vlczak-documents";
+          devices = [ "krakatice" "ustrice" "tucnak" ];
+        };
+        "~/Pictures" = {
+          id = "vlczak-pictures";
+          devices = [ "krakatice" "ustrice" "tucnak" "nothing2A" ];
+        };
+        "~/Programming" = {
+          id = "vlczak-programming";
+          devices = [ "krakatice" "ustrice" "tucnak" ];
+        };
+      };
+
       devices = {
         "krakatice" = {
           id = "JA5HIV3-I2XGPKX-UREJNH6-37GJHNU-XZ2MK76-7UW6B5A-5WQSGMA-R3SIPQK";
