@@ -8,7 +8,7 @@
       devices = {
         "krakatice" = {
           id = "JA5HIV3-I2XGPKX-UREJNH6-37GJHNU-XZ2MK76-7UW6B5A-5WQSGMA-R3SIPQK";
-          addresses = [ "upd://10.20.30.90:22000" ];
+          addresses = [ "udp://10.20.30.90:22000" ];
         };
         "tucnak" = {
           id = "I3SB3GU-JT56N2A-D376G5E-2AJ3XKK-W5LRERJ-AR7SUGA-P2RSZ5Y-WOFYWAQ";
