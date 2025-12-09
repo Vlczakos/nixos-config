@@ -7,7 +7,7 @@
     settings = {
       devices = {
         "krakatice" = {
-          id = "PLACEHOLDER";
+          id = "JA5HIV3-I2XGPKX-UREJNH6-37GJHNU-XZ2MK76-7UW6B5A-5WQSGMA-R3SIPQK";
           addresses = [ "10.20.30.90" ];
         };
         "tucnak" = {
