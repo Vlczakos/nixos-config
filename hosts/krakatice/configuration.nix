@@ -97,15 +97,15 @@
     settings.folders = {
       "/sync/vlczak-documents" = {
         id = "vlczak-documents";
-        devices = [ "krakatice" ];
+        devices = [ "nothing2A" "tucnak" ];
       };
       "/sync/vlczak-pictures" = {
         id = "vlczak-pictures";
-        devices = [ "krakatice" ];
+        devices = [ "nothing2A" "tucnak" ];
       };
       "/sync/vlczak-programming" = {
         id = "vlczak-programming";
-        devices = [ "krakatice" ];
+        devices = [ "nothing2A" "tucnak" ];
       };
     };
   };

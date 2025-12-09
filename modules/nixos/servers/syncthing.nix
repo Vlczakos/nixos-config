@@ -3,6 +3,7 @@
   services.syncthing = {
     enable = true;
     dataDir = "/etc/syncthing";
+    user = "yourUser";
 
     settings = {
       devices = {
@@ -15,6 +16,9 @@
         };
         "ustrice" = {
           id = "PLACEHOLDER";
+        };
+        "nothing2A" = {
+          id = "FNEJVTE-BCON45I-6MXQGJU-EWORGOB-NKZWWZJ-WLJUTWM-F3KGXJZ-SJGGHQO";
         };
       };
 
