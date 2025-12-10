@@ -11,7 +11,7 @@
         };
         "~/Pictures" = {
           id = "vlczak-pictures";
-          devices = [ "krakatice" "tucnak" "nothing2A" ];
+          devices = [ "krakatice" "tucnak" ];
         };
         "~/Programming" = {
           id = "vlczak-programming";

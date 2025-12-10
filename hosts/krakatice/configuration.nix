@@ -39,14 +39,14 @@
   networking = {
     firewall = {
       allowedTCPPorts = [
-        8080
-        25565
+        8080  # mc map
+        25565 # mc server
 
         22000 # syncthing
       ];
       allowedUDPPorts = [
-        24454
-        51820
+        24454 # mc voice chat
+        51820 # vpn
       ];
     };
   };
