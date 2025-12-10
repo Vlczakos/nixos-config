@@ -7,15 +7,15 @@
       folders = {
         "~/Documents" = {
           id = "vlczak-documents";
-          devices = [ "krakatice" "tucnak" ];
+          devices = [ "krakatice" "tucnak" "ustrice" ];
         };
         "~/Pictures" = {
           id = "vlczak-pictures";
-          devices = [ "krakatice" "tucnak" ];
+          devices = [ "krakatice" "tucnak" "ustrice" ];
         };
         "~/Programming" = {
           id = "vlczak-programming";
-          devices = [ "krakatice" "tucnak" ];
+          devices = [ "krakatice" "tucnak" "ustrice" ];
         };
       };
 
@@ -28,7 +28,7 @@
           id = "I3SB3GU-JT56N2A-D376G5E-2AJ3XKK-W5LRERJ-AR7SUGA-P2RSZ5Y-WOFYWAQ";
         };
         "ustrice" = {
-          id = "PLACEHOLDER";
+          id = "X7N5G26-ES7BGE7-ASXEHHJ-DHUPBY7-CNLPHXU-RDEQKNS-2TIGU42-EYU3EAY";
         };
         "nothing2A" = {
           id = "FNEJVTE-BCON45I-6MXQGJU-EWORGOB-NKZWWZJ-WLJUTWM-F3KGXJZ-SJGGHQO";
