@@ -1,4 +1,11 @@
 { ... }:
+let
+  sync_devices = [
+            "krakatice"
+            "tucnak"
+            "ustrice"
+          ];
+in
 {
   home.file."Programming/.stignore" = {
     force = true;
@@ -13,36 +20,28 @@
 
     settings = {
       folders = {
+        "/nixos-config" = {
+          id = "vlczak-nixos-config";
+          devices = sync_devices;
+        };
         "~/Documents" = {
           id = "vlczak-documents";
-          devices = [
-            "krakatice"
-            "tucnak"
-            "ustrice"
-          ];
+          devices = sync_devices;
         };
         "~/Pictures" = {
           id = "vlczak-pictures";
-          devices = [
-            "krakatice"
-            "tucnak"
-            "ustrice"
-          ];
+          devices = sync_devices;
         };
         "~/Programming" = {
           id = "vlczak-programming";
-          devices = [
-            "krakatice"
-            "tucnak"
-            "ustrice"
-          ];
+          devices = sync_devices;
         };
       };
 
       devices = {
         "krakatice" = {
           id = "JA5HIV3-I2XGPKX-UREJNH6-37GJHNU-XZ2MK76-7UW6B5A-5WQSGMA-R3SIPQK";
-          addresses = [ "tcp://10.20.30.90:22000" ];
+          addresses = [ "tcp://10.20.30.90:22000" "tcp://192.168.1.90:22000" ];
         };
         "tucnak" = {
           id = "I3SB3GU-JT56N2A-D376G5E-2AJ3XKK-W5LRERJ-AR7SUGA-P2RSZ5Y-WOFYWAQ";
