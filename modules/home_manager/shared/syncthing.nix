@@ -7,15 +7,15 @@
       folders = {
         "~/Documents" = {
           id = "vlczak-documents";
-          devices = [ "krakatice" "ustrice" "tucnak" ];
+          devices = [ "krakatice" "tucnak" ];
         };
         "~/Pictures" = {
           id = "vlczak-pictures";
-          devices = [ "krakatice" "ustrice" "tucnak" "nothing2A" ];
+          devices = [ "krakatice" "tucnak" "nothing2A" ];
         };
         "~/Programming" = {
           id = "vlczak-programming";
-          devices = [ "krakatice" "ustrice" "tucnak" ];
+          devices = [ "krakatice" "tucnak" ];
         };
       };
 
