@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    #nerd-fonts.blex-mono
     nerd-fonts.bitstream-vera-sans-mono
     noto-fonts-color-emoji
   ];
@@ -19,9 +18,11 @@
     enable = true;
 
     theme = {
-      name = "adw-gtk3-dark";
+      name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
+    colorScheme = "dark";
+
     iconTheme = {
       name = "Papirus";
       package = pkgs.papirus-icon-theme.override { color = "bluegrey"; };
@@ -30,25 +31,26 @@
 
   qt = {
     enable = true;
-    platformTheme = {
-      name = "gtk3";
-    };
+    platformTheme.name = "gtk3";
+    style.name = "kvantum";
   };
 
   fonts.fontconfig = {
     enable = true;
-    defaultFonts.emoji = [
-      "BitstromWera Nerd Font Propo"
-      "Noto Color Emoji"
-    ];
-    defaultFonts.monospace = [
-      "BitstromWera Nerd Font Mono"
-    ];
-    defaultFonts.sansSerif = [
-      "BitstromWera Nerd Font Propo"
-    ];
-    defaultFonts.serif = [
-      "BitstromWera Nerd Font Propo"
-    ];
+    defaultFonts = {
+      emoji = [
+        "BitstromWera Nerd Font Propo"
+        "Noto Color Emoji"
+      ];
+      monospace = [
+        "BitstromWera Nerd Font Mono"
+      ];
+      sansSerif = [
+        "BitstromWera Nerd Font Propo"
+      ];
+      serif = [
+        "BitstromWera Nerd Font Propo"
+      ];
+    };
   };
 }
