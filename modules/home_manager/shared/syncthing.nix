@@ -1,5 +1,13 @@
 { ... }:
 {
+  home.file."Programming/.stignore" = {
+    force = true;
+    text = ''
+      target
+      .direnv
+    '';
+  };
+
   services.syncthing = {
     enable = true;
 
@@ -7,15 +15,27 @@
       folders = {
         "~/Documents" = {
           id = "vlczak-documents";
-          devices = [ "krakatice" "tucnak" "ustrice" ];
+          devices = [
+            "krakatice"
+            "tucnak"
+            "ustrice"
+          ];
         };
         "~/Pictures" = {
           id = "vlczak-pictures";
-          devices = [ "krakatice" "tucnak" "ustrice" ];
+          devices = [
+            "krakatice"
+            "tucnak"
+            "ustrice"
+          ];
         };
         "~/Programming" = {
           id = "vlczak-programming";
-          devices = [ "krakatice" "tucnak" "ustrice" ];
+          devices = [
+            "krakatice"
+            "tucnak"
+            "ustrice"
+          ];
         };
       };
 
