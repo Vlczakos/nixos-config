@@ -41,6 +41,8 @@
       allowedTCPPorts = [
         8080
         25565
+
+        22000 # syncthing
       ];
       allowedUDPPorts = [
         24454
