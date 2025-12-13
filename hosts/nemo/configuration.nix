@@ -54,6 +54,22 @@
     };
   };
 
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.20.30.70/24" ];
+      privateKeyFile = "/etc/wg-keys/private";
+
+      peers = [
+        {
+          publicKey = "SfLorxq/7wKXr+NQ498zcPFYr0UrraolfITXJKcDmlM=";
+          allowedIPs = [ "10.20.30.0/24" ];
+          endpoint = "192.168.1.90:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

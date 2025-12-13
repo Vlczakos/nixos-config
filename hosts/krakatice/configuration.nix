@@ -77,15 +77,19 @@
 
       peers = [
         {
-          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo=";
+          publicKey = "Ci6a5eHofzrr10zAF2N/zFez/PjBERGu/0povFlNfCo="; # nemo
+          allowedIPs = [ "10.20.30.70/32" ];
+        }
+        {
+          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # ustrice
           allowedIPs = [ "10.20.30.80/32" ];
         }
         {
-          publicKey = "Fp6fCOgPSeTKZmg/2QT5zG33NzVJfHrl4NOd2fVqfw8=";
+          publicKey = "Fp6fCOgPSeTKZmg/2QT5zG33NzVJfHrl4NOd2fVqfw8="; # tucnak
           allowedIPs = [ "10.20.30.100/32" ];
         }
         {
-          publicKey = "4B8Z66WcxGORKiPVp4TFOYgKf3rABXS5PQqhfJUwqzM=";
+          publicKey = "4B8Z66WcxGORKiPVp4TFOYgKf3rABXS5PQqhfJUwqzM="; # nothing 2A
           allowedIPs = [ "10.20.30.101/32" ];
         }
       ];
