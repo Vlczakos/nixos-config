@@ -36,6 +36,24 @@
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
+  networking.networkmanager.ensureProfiles.profiles = {
+    "static-ethernet" = {
+      connection = {
+        id = "static-ethernet";
+        type = "ethernet";
+        interface-name = "eno1";
+        autoconnect = true;
+      };
+
+      ipv4 = {
+        method = "manual";
+        addresses = "192.168.1.70/24";
+        gateway = "192.168.1.1";
+        dns = "8.8.8.8";
+      };
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
