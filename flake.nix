@@ -48,6 +48,12 @@
             ./hosts/ustrice/configuration.nix
           ];
         };
+        nemo = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/nemo/configuration.nix
+          ];
+        };
       };
 
     };
