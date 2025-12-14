@@ -4,6 +4,7 @@ let
             "krakatice"
             "tucnak"
             "ustrice"
+            "nemo"
           ];
 in
 {
