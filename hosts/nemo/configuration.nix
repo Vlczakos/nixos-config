@@ -11,6 +11,7 @@
     ./../../modules/nixos/shared
 
     ./../../modules/nixos/servers/ssh.nix
+    ./../../modules/nixos/servers/blocky.nix
     # ./../../modules/nixos/servers/minecraft.nix
     # ./../../modules/nixos/servers/web_server.nix
   ];
