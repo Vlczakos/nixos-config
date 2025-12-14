@@ -1,13 +1,15 @@
 { ... }:
 {
+  networking.firewall.allowedUDPPorts = [ 53 ];
+
   services.blocky = {
     enable = true;
     settings = {
       upstreams.groups.default = [
-       "1.1.1.1"
-       "8.8.8.8"
+        "1.1.1.1"
+        "8.8.8.8"
       ];
-      
+
       customDNS = {
         customTTL = "30m";
 
@@ -18,7 +20,7 @@
 
       blocking = {
         denylists = {
-          ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+          ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ];
         };
 
         clientGroupsBlock = {
