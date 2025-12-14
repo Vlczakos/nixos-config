@@ -41,8 +41,6 @@
       allowedTCPPorts = [
         8080  # mc map
         25565 # mc server
-
-        22000 # syncthing
       ];
       allowedUDPPorts = [
         24454 # mc voice chat
@@ -50,6 +48,7 @@
       ];
     };
   };
+
 
   networking.networkmanager.ensureProfiles.profiles = {
     "static-ethernet" = {
@@ -94,6 +93,10 @@
         }
       ];
     };
+  };
+
+  networking.firewall.interfaces."wg0" = {
+    allowedTCPPorts = [ 22000 ];
   };
 
   # This value determines the NixOS release from which the default
