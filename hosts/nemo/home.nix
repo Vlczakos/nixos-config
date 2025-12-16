@@ -3,6 +3,39 @@
   home.username = "vlczak";
   home.homeDirectory = "/home/vlczak";
 
+  services.syncthing.settings.folders = {
+    "~/Pictures/Photos" = {
+      versioning = {
+        type = "trashcan";
+        fsPath = "~/Pictures/PhotosDeleted";
+      };
+    };
+
+    "~/Pictures" = {
+      versioning = {
+        type = "staggered";
+        fsPath = "~/backup/Pictures";
+
+        params = {
+          cleanInterval = "3600";
+          maxAge = "30";
+        };
+      };
+    };
+
+    "~/Documents" = {
+      versioning = {
+        type = "staggered";
+        fsPath = "~/backup/Documents";
+
+        params = {
+          cleanInterval = "3600";
+          maxAge = "30";
+        };
+      };
+    };
+  };
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
