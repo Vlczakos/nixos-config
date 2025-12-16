@@ -37,14 +37,6 @@
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
 
-  networking = {
-    firewall = {
-      allowedUDPPorts = [
-        51820 # vpn
-      ];
-    };
-  };
-
   networking.networkmanager.ensureProfiles.profiles = {
     "static-ethernet" = {
       connection = {

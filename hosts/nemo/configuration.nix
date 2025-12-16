@@ -55,6 +55,8 @@
     };
   };
 
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.20.30.70/24" ];
