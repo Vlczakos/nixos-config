@@ -14,7 +14,6 @@
 
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/blocky.nix
-    # ./../../modules/nixos/servers/web_server.nix
   ];
 
   networking.hostName = "nemo"; # Define your hostname.
@@ -59,14 +58,25 @@
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.20.30.70/24" ];
+      listenPort = 51820;
       privateKeyFile = "/etc/wg-keys/private";
 
       peers = [
         {
-          publicKey = "SfLorxq/7wKXr+NQ498zcPFYr0UrraolfITXJKcDmlM=";
-          allowedIPs = [ "10.20.30.0/24" ];
-          endpoint = "192.168.1.90:51820";
-          persistentKeepalive = 25;
+          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # ustrice
+          allowedIPs = [ "10.20.30.80/32" ];
+        }
+        {
+          publicKey = "SfLorxq/7wKXr+NQ498zcPFYr0UrraolfITXJKcDmlM="; # krakatice
+          allowedIPs = [ "10.20.30.90/32" ];
+        }
+        {
+          publicKey = "Fp6fCOgPSeTKZmg/2QT5zG33NzVJfHrl4NOd2fVqfw8="; # tucnak
+          allowedIPs = [ "10.20.30.100/32" ];
+        }
+        {
+          publicKey = "4B8Z66WcxGORKiPVp4TFOYgKf3rABXS5PQqhfJUwqzM="; # nothing 2A
+          allowedIPs = [ "10.20.30.101/32" ];
         }
       ];
     };

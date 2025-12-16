@@ -66,25 +66,14 @@
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.20.30.90/24" ];
-      listenPort = 51820;
       privateKeyFile = "/etc/wg-keys/private";
 
       peers = [
         {
-          publicKey = "Ci6a5eHofzrr10zAF2N/zFez/PjBERGu/0povFlNfCo="; # nemo
-          allowedIPs = [ "10.20.30.70/32" ];
-        }
-        {
-          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # ustrice
-          allowedIPs = [ "10.20.30.80/32" ];
-        }
-        {
-          publicKey = "Fp6fCOgPSeTKZmg/2QT5zG33NzVJfHrl4NOd2fVqfw8="; # tucnak
-          allowedIPs = [ "10.20.30.100/32" ];
-        }
-        {
-          publicKey = "4B8Z66WcxGORKiPVp4TFOYgKf3rABXS5PQqhfJUwqzM="; # nothing 2A
-          allowedIPs = [ "10.20.30.101/32" ];
+          publicKey = "Ci6a5eHofzrr10zAF2N/zFez/PjBERGu/0povFlNfCo=";
+          allowedIPs = [ "10.20.30.0/24" ];
+          endpoint = "192.168.1.70:51820";
+          persistentKeepalive = 25;
         }
       ];
     };
