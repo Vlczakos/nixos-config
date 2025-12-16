@@ -10,9 +10,10 @@
 
     ./../../modules/nixos/shared
 
+    ./modules/minecraft.nix
+
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/blocky.nix
-    # ./../../modules/nixos/servers/minecraft.nix
     # ./../../modules/nixos/servers/web_server.nix
   ];
 
@@ -73,7 +74,10 @@
 
   networking.firewall.interfaces."wg0" = {
     allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [ 22000 ];
   };
+
+  minecraft.version = "fabric-1_21_10";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

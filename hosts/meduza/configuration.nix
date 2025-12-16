@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/gui
-    
+
     ./../../modules/nixos/gui/steam.nix
     ./../../modules/nixos/gui/saleae-logic.nix
     ./../../modules/nixos/gui/vmware.nix
@@ -38,7 +38,7 @@
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="plugdev"
-  '';  
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

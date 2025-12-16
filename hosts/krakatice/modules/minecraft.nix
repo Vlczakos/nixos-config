@@ -1,7 +1,26 @@
-{ pkgs, inputs, lib, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
+
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+
+  networking = {
+    firewall = {
+      allowedTCPPorts = [
+        8080 # mc map
+        25565 # mc server
+      ];
+      allowedUDPPorts = [
+        24454 # mc voice chat
+      ];
+    };
+  };
 
   services.minecraft-servers = {
     enable = true;
@@ -11,9 +30,13 @@
     servers = {
       server = {
         enable = true;
-        package = pkgs.fabricServers.fabric-1_21_5;
+        package = (
+          pkgs.minecraftServers.fabric-1_21_5.override (prev: {
+            jre_headless = pkgs.temurin-bin-25;
+          })
+        );
 
-        jvmOpts = "-Xms10G -Xmx10G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1";
+        jvmOpts = "-Xms10G -Xmx10G -XX:+UseZGC -XX:+UseCompactObjectHeaders";
 
         serverProperties = {
           allow-flight = false;
@@ -33,7 +56,6 @@
     };
   };
 
-
   services.borgbackup.jobs."minecraft-server-backup" = {
     paths = [ "/srv/minecraft/server" ];
     repo = "/srv/minecraft/server-backup";
@@ -45,8 +67,13 @@
       within = "2d";
       weekly = 3;
     };
-    
-    startAt = [ "00:00" "06:00" "12:00" "18:00" ];
+
+    startAt = [
+      "00:00"
+      "06:00"
+      "12:00"
+      "18:00"
+    ];
 
     preHook = ''
       ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-off" C-m

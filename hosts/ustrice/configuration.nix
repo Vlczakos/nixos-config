@@ -77,6 +77,7 @@
 
   networking.firewall.interfaces."wg0" = {
     allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [ 22000 ];
   };
 
   services.udev.extraRules = ''

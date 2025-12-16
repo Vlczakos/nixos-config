@@ -51,6 +51,7 @@
 
   networking.firewall.interfaces."wg0" = {
     allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [ 22000 ];
   };
 
   # disable tpm2 - not used and startup service timed out several times

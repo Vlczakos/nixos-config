@@ -10,7 +10,8 @@
 
     ./../../modules/nixos/shared
 
-    ./../../modules/nixos/servers/minecraft.nix
+    ./modules/minecraft.nix
+
     ./../../modules/nixos/servers/ssh.nix
     ./../../modules/nixos/servers/web_server.nix
   ];
@@ -38,17 +39,11 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [
-        8080  # mc map
-        25565 # mc server
-      ];
       allowedUDPPorts = [
-        24454 # mc voice chat
         51820 # vpn
       ];
     };
   };
-
 
   networking.networkmanager.ensureProfiles.profiles = {
     "static-ethernet" = {
@@ -97,6 +92,7 @@
 
   networking.firewall.interfaces."wg0" = {
     allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [ 22000 ];
   };
 
   # This value determines the NixOS release from which the default
