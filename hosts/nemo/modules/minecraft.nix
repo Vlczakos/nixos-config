@@ -36,7 +36,7 @@
           })
         );
 
-        jvmOpts = "-Xms10G -Xmx10G -XX:+UseZGC -XX:+UseCompactObjectHeaders";
+        jvmOpts = "-Xms10G -Xmx10G -XX:+UseZGC -XX:+UseCompactObjectHeaders -Dfabric.addMods=mods";
 
         serverProperties = {
           allow-flight = false;
@@ -51,6 +51,10 @@
           hide-online-players = true;
           enable-command-block = true;
           pause-when-empty-seconds = -1;
+          sync-chunk-writes = false;
+          enforce-secure-profile = false;
+          network-compression-threshold = 128;
+          function-permission-level = 3;
         };
       };
     };
