@@ -13,6 +13,7 @@
 
   nixpkgs.config.allowUnfree = true;
   services.gvfs.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.networkmanager = { 
     enable = true;
     plugins = [
