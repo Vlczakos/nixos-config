@@ -65,7 +65,7 @@
         {
           publicKey = "Ci6a5eHofzrr10zAF2N/zFez/PjBERGu/0povFlNfCo=";
           allowedIPs = [ "10.20.30.0/24" ];
-          endpoint = "192.168.1.70:51820";
+          endpoint = "vlcak.com:51820";
           persistentKeepalive = 25;
         }
       ];
