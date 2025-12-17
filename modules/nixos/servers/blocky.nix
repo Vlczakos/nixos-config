@@ -14,7 +14,7 @@
         customTTL = "30m";
 
         mapping = {
-          "vlcak.com" = "192.168.1.90";
+          "vlcak.com" = "192.168.1.70";
         };
       };
 

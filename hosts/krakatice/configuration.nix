@@ -32,6 +32,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAOmGi1vEdJN6OGHn6sRGfzxpT3eA+aL+mVfz54E6MfI vlczak@ustrice"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEz0M1anq7Uq32EiIQOG9NLkomyS7q7/46yHQZ7lbMcz"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMM2ILrcyKxtrmDh80B5VHkzIyhPe/se19LAmsKklGvv vlczak@tucnak"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHAmziGCbBYFzRqNOaNUcjWecw3oxGiryR3OinOZclUw vlczak@nemo"
     ];
     # packages = with pkgs; [ ];
   };
