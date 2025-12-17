@@ -11,6 +11,7 @@
     enable = true;
 
     settings = {
+      core_load = true;
       cpu_stats = true;
       cpu_temp = true;
 
