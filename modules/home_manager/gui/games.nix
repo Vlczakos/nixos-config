@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    prismlauncher
+    (prismlauncher.override (prev: {
+      jdk21 = pkgs.temurin-bin-25;
+      jdk17 = pkgs.temurin-bin-25;
+    }))
   ];
 
   programs.mangohud = {
