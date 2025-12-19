@@ -61,6 +61,8 @@
 
   networking.wg-quick.interfaces = {
     wg0 = {
+      mtu = 1380;
+
       address = [ "10.20.30.80/24" ];
       privateKeyFile = "/etc/wg-keys/private";
 
