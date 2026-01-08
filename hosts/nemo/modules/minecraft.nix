@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   lib,
-  config,
   ...
 }:
 {
@@ -12,6 +11,14 @@
 
   networking = {
     firewall = {
+      extraCommands = ''
+        iptables -I INPUT -s 92.119.164.120 -j DROP
+      '';
+
+      extraStopCommands = ''
+        iptables -D INPUT -s 92.119.164.120 -j DROP || true
+      '';
+
       allowedTCPPorts = [
         8080 # mc map
         25565 # mc server
@@ -60,33 +67,33 @@
     };
   };
 
-  # services.borgbackup.jobs."minecraft-server-backup" = {
-  #   paths = [ "/srv/minecraft/server" ];
-  #   repo = "/srv/minecraft/server-backup";
-  #   user = "minecraft";
-  #   compression = "zstd";
-  #   encryption.mode = "none";
+  services.borgbackup.jobs."minecraft-server-backup" = {
+    paths = [ "/srv/minecraft/server" ];
+    repo = "/srv/minecraft/server-backup";
+    user = "minecraft";
+    compression = "zstd";
+    encryption.mode = "none";
 
-  #   prune.keep = {
-  #     within = "2d";
-  #     weekly = 3;
-  #   };
+    prune.keep = {
+      within = "2d";
+      weekly = 3;
+    };
 
-  #   startAt = [
-  #     "00:00"
-  #     "06:00"
-  #     "12:00"
-  #     "18:00"
-  #   ];
+    startAt = [
+      "00:00"
+      "06:00"
+      "12:00"
+      "18:00"
+    ];
 
-  #   preHook = ''
-  #     ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-off" C-m
-  #     ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-all" C-m
-  #     sleep 10
-  #   '';
+    preHook = ''
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-off" C-m
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-all" C-m
+      sleep 10
+    '';
 
-  #   postHook = ''
-  #     ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-on" C-m
-  #   '';
-  # };
+    postHook = ''
+      ${lib.getExe pkgs.tmux} -S /run/minecraft/server.sock send-keys "save-on" C-m
+    '';
+  };
 }
