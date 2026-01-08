@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./audio.nix
@@ -11,10 +11,30 @@
     ./docker.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.vscode-extensions.overlays.default
+    ];
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+      fuse3
+      icu
+      nss
+      openssl
+      curl
+      expat
+    ];
+  };
+
   services.gvfs.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  networking.networkmanager = { 
+  networking.networkmanager = {
     enable = true;
     plugins = [
       pkgs.networkmanager-openvpn
