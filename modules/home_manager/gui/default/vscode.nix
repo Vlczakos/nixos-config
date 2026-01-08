@@ -1,18 +1,20 @@
 {
   pkgs,
-  inputs,
+  config,
   ...
 }:
-let
-  extensions = inputs.vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
-in
 {
   home.packages = with pkgs; [
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   programs.fish.shellAliases.code = "codium";
+
+  home.file.".vscodium-server/extensions" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.vscode-oss/extensions";
+    force = true;
+  };
 
   programs.vscode = {
     enable = true;
@@ -24,7 +26,7 @@ in
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
 
-      extensions = with extensions; [
+      extensions = with pkgs.vscode-marketplace; [
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
         mkhl.direnv
@@ -35,7 +37,9 @@ in
         james-yu.latex-workshop
         ms-azuretools.vscode-docker
         slint.slint
-      ];
+      ] ++ (with pkgs.open-vsx; [
+        jeanp413.open-remote-ssh
+      ]);
 
       userSettings = {
         nix = {
