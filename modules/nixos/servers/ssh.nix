@@ -6,6 +6,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
+      AllowStreamLocalForwarding = "yes";
     };
   };
 

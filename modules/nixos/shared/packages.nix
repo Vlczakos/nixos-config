@@ -7,6 +7,7 @@
     git
     usbutils
     sshfs
+    waypipe
   ];
 
   programs.direnv.enable = true;
