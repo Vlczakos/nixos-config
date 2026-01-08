@@ -1,29 +1,28 @@
 { pkgs, ... }:
 let
-  thunarUnwrapped = pkgs.xfce.thunar.overrideAttrs (o: {
-    configureFlags = (o.configureFlags or []) ++ [ "--disable-wallpaper-plugin" ];
+  thunar_unwrapped = pkgs.thunar-unwrapped.overrideAttrs (o: {
+    configureFlags = (o.configureFlags or [ ]) ++ [ "--disable-wallpaper-plugin" ];
   });
 
-  thunarWithPlugins = pkgs.callPackage
-    "${builtins.dirOf pkgs.xfce.thunar.meta.position}/wrapper.nix"
-    {
-      inherit (pkgs) makeWrapper symlinkJoin lib;
-      thunarPlugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-      thunar-unwrapped = thunarUnwrapped;
-    };
+  thunar_package = pkgs.thunar.override {
+    thunar-unwrapped = thunar_unwrapped;
+    thunarPlugins = with pkgs; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 in
 {
   environment.systemPackages = [
-    thunarWithPlugins
-    pkgs.file-roller
+    thunar_package
   ];
 
   services.dbus.packages = [
-    thunarWithPlugins
+    thunar_package
   ];
 
   systemd.packages = [
-    thunarWithPlugins
+    thunar_package
   ];
 
   programs.xfconf.enable = true;
