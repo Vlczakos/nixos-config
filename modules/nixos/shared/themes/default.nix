@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.stylix.nixosModules.stylix
@@ -8,7 +13,11 @@
     enable = true;
     polarity = "dark";
 
-    image = ./background_svestkova_draha.jpg;
+    image =
+      if config.networking.hostName == "tucnak" then
+        ./wallpapers/svestkova_draha.jpg
+      else
+        ./wallpapers/nix-binary.png;
 
     base16Scheme = {
       # Primary

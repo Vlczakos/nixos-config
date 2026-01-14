@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   home.shell.enableFishIntegration = true;
@@ -76,5 +76,34 @@
           ";
       };
     };
+
+    interactiveShellInit =
+      let
+        c = config.lib.stylix.colors;
+      in
+      ''
+        set -g fish_color_normal ${c.base05}
+
+        set -g fish_color_command ${c.base0B}
+        set -g fish_color_param ${c.base0D}
+        set -g fish_color_keyword ${c.base0E}
+        set -g fish_color_quote ${c.base0A}
+        set -g fish_color_redirection ${c.base0C}
+        set -g fish_color_error ${c.base08}
+
+        set -g fish_color_comment ${c.base03}
+        set -g fish_color_selection --background=${c.base02}
+        set -g fish_color_search_match --background=${c.base02}
+        set -g fish_color_operator ${c.base0C}
+        set -g fish_color_escape ${c.base0C}
+        set -g fish_color_autosuggestion ${c.base03}
+
+        set -g fish_pager_color_prefix ${c.base0C} --bold
+        set -g fish_pager_color_completion ${c.base05}
+        set -g fish_pager_color_description ${c.base03}
+        set -g fish_pager_color_progress ${c.base0C}
+      '';
   };
+
+  stylix.targets.fish.enable = false;
 }

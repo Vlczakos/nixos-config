@@ -229,10 +229,15 @@ in
           "workspaces, 1, 4, snap, slide"
           "specialWorkspace, 1, 4, snap, fade"
 
-          "layers, 1, 4, snap, slidefade"
+          "layers, 1, 6, snap, slidefade"
           "layersOut, 1, 8, snap, slidefade"
         ];
       };
+
+      layerrule = [
+        "animation fade, match:namespace selection"
+        "animation fade, match:namespace hyprpicker"
+      ];
 
       dwindle = {
         pseudotile = true;
@@ -277,7 +282,8 @@ in
         "$mainMod, O, exec, okular"
         "$mainMod, X, exec, xournalpp"
 
-        ", Print, exec, grimblast copy area --freeze"
+        ", Print, exec, ${lib.getExe pkgs.hyprshot} -m active -m window --output-folder ~/Pictures/Screenshots --filename $(date +'%Y-%m-%d_%H-%M-%S.png')"
+        "$mainMod, Print, exec, ${lib.getExe pkgs.hyprshot} -m region --output-folder ~/Pictures/Screenshots --filename $(date +'%Y-%m-%d_%H-%M-%S.png')"
         "CONTROL, Escape, exec, kitty btop"
         "CONTROL+SHIFT, Escape, exec, killall .waybar-wrapped || waybar"
         "$mainMod, J, exec, ${pkgs.kitty}/bin/kitten panel --edge=center --layer=overlay --focus-policy=exclusive -o background_opacity=1.0 -o font_size=20 ${lib.getExe pkgs.cmatrix} -u 6 -a -b -s"
@@ -370,7 +376,7 @@ in
       splash = false;
       ipc = false;
     };
-  };  
+  };
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 }
