@@ -33,6 +33,7 @@
     ];
   };
 
+  zramSwap.enable = true;
   services.gvfs.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.networkmanager = {
@@ -45,7 +46,9 @@
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+    "ca-derivations"
   ];
+  nix.settings.auto-optimise-store = true;
 
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"
