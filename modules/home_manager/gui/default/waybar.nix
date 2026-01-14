@@ -176,31 +176,31 @@ in
         padding: 3px;
       }
 
-      #clock,
-      #workspaces,
-      #tray {
+      .modules-left > widget:first-child > *,
+      .modules-center > widget:first-child > *,
+      .modules-right > widget:first-child > * {
         border-top-left-radius: 5px;
         padding-top: 6px;
       }
 
-      #clock,
-      #workspaces,
-      #battery {
+      .modules-left > widget:last-child > *,
+      .modules-center > widget:last-child > *,
+      .modules-right > widget:last-child > * {
         border-bottom-left-radius: 5px;
         padding-bottom: 6px;
-        margin-bottom: 60px;
       }
 
-      #clock {
+      .modules-left > widget:first-child > * {
         margin-top: 80px;
       }
 
-      #battery {
-        margin-bottom: 60px;
+
+      .modules-center > widget:last-child > * {
+        margin-bottom: 200px;
       }
 
-      #workspaces {
-        margin-bottom: 200px;
+      .modules-right > widget:last-child > * {
+        margin-bottom: 60px;
       }
 
       #pulseaudio, 
