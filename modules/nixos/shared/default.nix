@@ -9,6 +9,7 @@
     ./packages.nix
     ./shell.nix
     ./docker.nix
+    ./themes
   ];
 
   nixpkgs = {

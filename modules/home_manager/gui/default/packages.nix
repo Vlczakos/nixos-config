@@ -29,7 +29,6 @@
     xdg-utils
     networkmanagerapplet
     pavucontrol
-    swww
     grimblast
     hyprpolkitagent
     dconf

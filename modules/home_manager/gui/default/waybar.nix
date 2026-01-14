@@ -1,40 +1,36 @@
-{ ... }:
+{ config, pkgs, ... }:
+
+let
+  c = config.lib.stylix.colors;
+in
 {
+  stylix.targets.waybar.enable = false;
+
   programs.waybar = {
     enable = true;
 
     settings = {
       topbar = {
-        layer = "bottom";
-        position = "top";
-        # output = ["eDP-1"];
-        margin-top = 3;
+        layer = "top";
+        position = "right";
 
-        modules-left = [
-          "hyprland/workspaces"
-        ];
-        modules-center = [
-          "clock"
-        ];
+        modules-left = [ "clock" ];
+        modules-center = [ "hyprland/workspaces" ];
         modules-right = [
           "tray"
-          # "bluetooth"
-          # "custom/power"
-          "battery"
-          "backlight"
           "pulseaudio"
+          "backlight"
+          "battery"
         ];
-
 
         tray = {
           icon-size = 19;
-          spacing = 5;
-          rotate = 0;
+          spacing = 8;
         };
 
         clock = {
-          format = "{:%H:%M}";
-          format-alt = "{:%d. %m.  %H:%M}";
+          # format = "{:%H\n%M}";
+          format = "{:%H\n%M\n―\n%d\n%m}";
           tooltip = false;
         };
 
@@ -44,7 +40,14 @@
           format-icons = [
             ""
             ""
-            "" "" "" "" "" "" "" ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
           ];
           tooltip-format = "{desc} - {volume}%";
           on-click = "pavucontrol";
@@ -69,9 +72,9 @@
 
         battery = {
           interval = 1;
+          tooltip-format = "{capacity}%";
           format = "{icon}";
           format-charging = "󰂄";
-          tooltip-format = "{capacity}%";
           format-icons = [
             "󰂃"
             "󰁺"
@@ -91,102 +94,122 @@
 
     style = ''
       * {
-        font-size: 15px;
+        font-family: "${config.stylix.fonts.monospace.name}";
+        font-size: ${toString config.stylix.fonts.sizes.desktop}px;
         font-weight: bold;
         min-height: 0;
+        border: none;
+        box-shadow: none;
       }
 
-      @define-color main-bg #11111b;
-      @define-color main-fg #cdd6f4;
-
-      @define-color wb-act-bg #a6adc8;
-      @define-color wb-act-fg #313244;
-
-      @define-color wb-hvr-bg #f5c2e7;
-      @define-color wb-hvr-fg #313244;
+      @define-color fill-bg #${c.base01};
+      @define-color main-bg #${c.base00};
+      @define-color main-fg #${c.base05};
+      @define-color active-bg #${c.base02};
+      @define-color active-fg #${c.base05};
+      @define-color hover-bg #${c.base03};
+      @define-color hover-fg #${c.base05};
+      @define-color main-border #${c.base03};
+      @define-color hover-border #${c.base0C};
+      @define-color active-border #${c.base0D};
 
       window#waybar {
-        background: rgba(0, 0, 0, 0);
+        background: @fill-bg;
+        border-left: 2px solid @main-border;
       }
 
       #workspaces,
+      #workspaces button,
       #clock,
-      #tray menu,
       #tray,
-      #pulseaudio,
-      #backlight,
       #battery,
-      tooltip {
+      #backlight,
+      #pulseaudio {
         background: @main-bg;
         color: @main-fg;
       }
 
-      #tray menu,
-      tooltip {
-        border-radius: 7px;
-        border-width: 0px;
-      }
-
-      #tray menu {
-        padding-top: 15px;
+      #workspaces,
+      #clock,
+      #tray,
+      #battery,
+      #backlight,
+      #pulseaudio {
+        margin-left: 4px;
       }
 
       #workspaces button {
-        padding: 0px;
-        border-radius: 9px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        margin-left: 0px;
+        padding: 2px 3px;
+        margin: 2px;
+        margin-left: 2px;
         margin-right: 0px;
-        padding-left: 5px;
-        padding-right: 5px;
-        color: @main-fg;
-
-        transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
+        border-radius: 0px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-right: 2px solid @main-bg;
+        transition: all 0.2s ease-in-out;
       }
 
       #workspaces button.active {
-        background: @wb-act-bg;
-        color: @wb-act-fg;
-
-        transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
+        background: @active-bg;
+        color: @active-fg;
+        border-right: 2px solid @active-border;
       }
 
       #workspaces button:hover {
-        background: @wb-hvr-bg;
-        color: @wb-hvr-fg;
+        background: @hover-bg;
+        color: @hover-fg;
+        border-right: 2px solid @hover-border;
+      }
 
-        transition: all 0.15s cubic-bezier(.55,-0.68,.48,1.682);
+      tooltip, 
+      #tray menu {
+        background: @main-bg;
+        color: @main-fg;
+        border: 1px solid @active-border;
+      }
+
+      #tray,
+      #pulseaudio,
+      #backlight,
+      #battery {
+        padding: 3px;
       }
 
       #clock,
       #workspaces,
       #tray {
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
-        margin-left: 5px;
+        border-top-left-radius: 5px;
+        padding-top: 6px;
       }
+
       #clock,
       #workspaces,
-      #pulseaudio {
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
-        margin-right: 5px;
+      #battery {
+        border-bottom-left-radius: 5px;
+        padding-bottom: 6px;
+        margin-bottom: 60px;
       }
 
-      #clock,
-      #tray {
-        padding-left: 10px;
+      #clock {
+        margin-top: 80px;
       }
 
-      #clock,
-      #pulseaudio {
-        padding-right: 10px;
+      #battery {
+        margin-bottom: 60px;
       }
 
       #workspaces {
-        padding-left: 7px;
-        padding-right: 7px;
+        margin-bottom: 200px;
+      }
+
+      #pulseaudio, 
+      #backlight {
+        font-size: 20px;
+      }
+
+      #battery {
+        font-size: 14px;
       }
     '';
   };
