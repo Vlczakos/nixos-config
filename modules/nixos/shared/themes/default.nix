@@ -10,7 +10,7 @@
 
     image = ./background_svestkova_draha.jpg;
 
-    override = {
+    base16Scheme = {
       # Primary
       base00 = "#000000"; # Background
       base01 = "#202223";
