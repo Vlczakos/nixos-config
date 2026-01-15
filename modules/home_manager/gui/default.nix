@@ -8,6 +8,5 @@
     ./default/vscode.nix
     ./default/waybar.nix
     ./default/dunst.nix
-    ./default/themes.nix
   ];
 }
