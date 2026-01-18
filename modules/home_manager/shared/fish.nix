@@ -6,10 +6,6 @@
   programs.fish = {
     enable = true;
 
-    shellAliases = {
-      sysbuild = "nixos-rebuild switch --use-remote-sudo --verbose --flake /nixos-config";
-    };
-
     functions = {
       fish_greeting = {
         body = "# echo \"Starting fish...\"";
