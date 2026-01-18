@@ -9,6 +9,7 @@
     ./git.nix
     ./rbw.nix
     ./syncthing.nix
+    ./kitty.nix
   ];
 
   stylix.autoEnable = true;
