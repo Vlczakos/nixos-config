@@ -14,6 +14,7 @@ let
 in
 {
   environment.systemPackages = [
+    pkgs.file-roller
     thunar_package
   ];
 

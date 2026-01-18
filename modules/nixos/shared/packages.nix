@@ -8,6 +8,7 @@
     usbutils
     sshfs
     waypipe
+    ouch
   ];
 
   programs.direnv.enable = true;
