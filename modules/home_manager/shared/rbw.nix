@@ -12,6 +12,8 @@ let
         exit 1
     fi
 
+    ${pkgs.rbw}/bin/rbw unlock
+
     export RBW_SSH_ITEM="$1"
 
     export SSH_ASKPASS="$0"
