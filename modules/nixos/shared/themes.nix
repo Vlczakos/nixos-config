@@ -13,12 +13,6 @@
     enable = true;
     polarity = "dark";
 
-    image =
-      if config.networking.hostName == "tucnak" then
-        ./wallpapers/svestkova_draha.jpg
-      else
-        ./wallpapers/nix-binary.png;
-
     base16Scheme = {
       # Primary
       base00 = "#000000"; # Background
@@ -68,19 +62,6 @@
         desktop = 14; # Waybar, lišty, panely
         popups = 12; # Notifikace, kontextová menu
       };
-    };
-
-    icons = {
-      enable = true;
-      package = pkgs.papirus-icon-theme; # .override { color = "bluegrey"; };
-      dark = "Papirus-Dark";
-      light = "Papirus-Light";
-    };
-
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 19;
     };
 
     autoEnable = false;
