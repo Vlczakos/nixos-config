@@ -8,6 +8,7 @@
     kdePackages.okular
     xournalpp
     vlc
+    onlyoffice-desktopeditors
     libreoffice-fresh
     gimp
     qimgv
