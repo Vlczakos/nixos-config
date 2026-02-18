@@ -11,6 +11,7 @@
     ouch
   ];
 
+  programs.dconf.enable = true;
   programs.direnv.enable = true;
   programs.tmux = {
     enable = true;

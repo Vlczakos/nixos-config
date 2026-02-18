@@ -31,7 +31,6 @@
     networkmanagerapplet
     pavucontrol
     hyprpolkitagent
-    dconf
   ];
 
   services.playerctld.enable = true;
