@@ -82,6 +82,10 @@
           publicKey = "4B8Z66WcxGORKiPVp4TFOYgKf3rABXS5PQqhfJUwqzM="; # nothing 2A
           allowedIPs = [ "10.20.30.101/32" ];
         }
+        {
+          publicKey = "SQVFPbGfP+T7RpENUf1y7mLqIjn370OqpuCGcCey2lI="; # Anezka
+          allowedIPs = [ "10.20.30.102/32" ];
+        }
       ];
     };
   };
