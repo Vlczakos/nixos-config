@@ -67,6 +67,8 @@
         "[rust]".editor.defaultFormatter = "rust-lang.rust-analyzer";
         latex-workshop.formatting.latex = "tex-fmt";
         "[latex]".editor.wordWrap = "on";
+        terminal.integrated.enableKeyboardReporting = false;
+        terminal.integrated.shellIntegration.enabled = false;
 
         workbench.colorTheme = "Default Dark Modern";
         "workbench.colorCustomizations" = {
