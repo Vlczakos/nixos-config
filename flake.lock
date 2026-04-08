@@ -68,6 +68,40 @@
         "type": "github"
       }
     },
+    "bigtreetech_kernel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734429226,
+        "narHash": "sha256-vaCenRIrb3ggHy55NFz5eWsa6fi6VUO5DGf68ckR910=",
+        "owner": "bigtreetech",
+        "repo": "linux",
+        "rev": "31bb72fe15edb85182ff03b1c4c38caa4229039c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bigtreetech",
+        "ref": "bpi-6.6.y",
+        "repo": "linux",
+        "type": "github"
+      }
+    },
+    "bigtreetech_uboot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734573153,
+        "narHash": "sha256-PhHi0vKMeQ8N7rkNw+JoyJdpv4YQ1NW924lUY1GDnB8=",
+        "owner": "bigtreetech",
+        "repo": "u-boot",
+        "rev": "bb850b2ced48100e05ae08f5c04b874e26c69bec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bigtreetech",
+        "ref": "bpi-v2025.01-rc4",
+        "repo": "u-boot",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -239,6 +273,8 @@
     },
     "root": {
       "inputs": {
+        "bigtreetech_kernel": "bigtreetech_kernel",
+        "bigtreetech_uboot": "bigtreetech_uboot",
         "home_manager": "home_manager",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs",

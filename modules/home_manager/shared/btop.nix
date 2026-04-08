@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+let
+  isX86 = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+in
+{
   programs.btop = {
     enable = true;
     package = pkgs.btop.override {
-      rocmSupport = true;
-      cudaSupport = true;
+      rocmSupport = isX86;
+      cudaSupport = isX86;
     };
     settings = {
       vim_keys = true;

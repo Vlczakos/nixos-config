@@ -18,10 +18,19 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    bigtreetech_uboot = {
+      url = "github:bigtreetech/u-boot/bpi-v2025.01-rc4";
+      flake = false;
+    };
+    bigtreetech_kernel = {
+      url = "github:bigtreetech/linux/bpi-6.6.y";
+      flake = false;
     };
   };
 
@@ -57,6 +66,23 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/nemo/configuration.nix
+          ];
+        };
+        vorvan = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs =
+            let
+              pkgsCross = import inputs.nixpkgs {
+                localSystem = "x86_64-linux";
+                crossSystem = "aarch64-linux";
+              };
+            in
+            {
+              inherit inputs pkgsCross;
+            };
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            ./hosts/vorvan/configuration.nix
           ];
         };
       };

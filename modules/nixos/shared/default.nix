@@ -1,9 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 {
   imports = [
     ./audio.nix
     ./bluetooth.nix
-    ./bootloader.nix
     ./home_manager.nix
     ./locale.nix
     ./packages.nix
@@ -43,7 +42,7 @@
     ];
   };
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = lib.optional (pkgs.stdenv.hostPlatform.system != "aarch64-linux") "aarch64-linux";
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
   nix.settings.experimental-features = [

@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./../../modules/nixos/bootloader/systemd.nix
 
     ./../../modules/nixos/shared
 
@@ -66,6 +67,10 @@
       privateKeyFile = "/etc/wg-keys/private";
 
       peers = [
+        {
+          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # vorvan
+          allowedIPs = [ "10.20.30.60/32" ];
+        }
         {
           publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # ustrice
           allowedIPs = [ "10.20.30.80/32" ];
