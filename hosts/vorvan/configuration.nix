@@ -9,7 +9,7 @@ in
     ./../../modules/nixos/bootloader/uboot.nix
     ./modules/uboot.nix
     ./modules/kernel.nix
-    
+
     ./../../modules/nixos/shared
 
     ./../../modules/nixos/servers/ssh.nix
@@ -34,6 +34,24 @@ in
     # packages = with pkgs; [ ];
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
+
+  networking.networkmanager.ensureProfiles.profiles = {
+    "static-ethernet" = {
+      connection = {
+        id = "static-ethernet";
+        type = "ethernet";
+        interface-name = "end0";
+        autoconnect = true;
+      };
+
+      ipv4 = {
+        method = "manual";
+        addresses = "192.168.1.60/24";
+        gateway = "192.168.1.1";
+        dns = "192.168.1.70";
+      };
+    };
+  };
 
   networking.wg-quick.interfaces = {
     wg0 = {
