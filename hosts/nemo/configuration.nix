@@ -68,7 +68,7 @@
 
       peers = [
         {
-          publicKey = "CO45n+A8ScbJOluSC9chq4x6jWIUYGPr+0CFyDF6hXo="; # vorvan
+          publicKey = "fE7WVDP5b/DihFBlZt4XYi5pxFMYWA2qgOWFmCoHe2g="; # vorvan
           allowedIPs = [ "10.20.30.60/32" ];
         }
         {
