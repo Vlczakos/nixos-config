@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
 let
   sync_pcs = [
     "krakatice"
@@ -12,7 +12,7 @@ let
   ];
 in
 {
-  home.file = {
+  home.file = lib.mkIf config.services.syncthing.enable {
     "Programming/.stignore" = {
       force = true;
       text = ''
