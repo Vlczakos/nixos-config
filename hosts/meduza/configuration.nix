@@ -4,18 +4,24 @@
 }:
 {
   imports = [
+    ../../modules
+
     ./hardware-configuration.nix
-    ./../../modules/nixos/bootloader/systemd.nix
-
-    ./../../modules/nixos/gui
-
-    ./../../modules/nixos/gui/steam.nix
-    ./../../modules/nixos/gui/saleae-logic.nix
-    ./../../modules/nixos/gui/vmware.nix
-
-    ./../../modules/nixos/graphic_drivers/nvidia-prime.nix
-    ./../../modules/nixos/shared
   ];
+
+  custom.system.bootloader.systemd.enable = true;
+
+  custom.system.graphic_drivers.nvidia = {
+    enable = true;
+    prime = true;
+    intelBusId = "PCI:0@0:2:0";
+    nvidiaBusId = "PCI:1@0:0:0";
+  };
+
+  custom.profiles.core = true;
+  custom.profiles.gui = true;
+
+  custom.games.enable = true;
 
   networking.hostName = "meduza"; # Define your hostname.
 

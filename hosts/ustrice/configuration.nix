@@ -4,21 +4,23 @@
 }:
 {
   imports = [
+    ../../modules
+
     ./hardware-configuration.nix
-    ./../../modules/nixos/bootloader/systemd.nix
-
-    ./../../modules/nixos/gui
-
-    ./../../modules/nixos/gui/steam.nix
-    ./../../modules/nixos/gui/saleae-logic.nix
-    ./../../modules/nixos/gui/vmware.nix
-
-    ./../../modules/nixos/graphic_drivers/nvidia.nix
-    ./../../modules/nixos/shared
-
-    ./../../modules/nixos/servers/ssh.nix
-    ./../../modules/nixos/servers/sunshine.nix
   ];
+
+  custom.system.bootloader.systemd.enable = true;
+
+  custom.system.graphic_drivers.nvidia.enable = true;
+
+  custom.profiles.core = true;
+  custom.profiles.gui = true;
+
+  custom.games.enable = true;
+
+  custom.services.ssh.enable = true;
+  custom.services.sunshine.enable = true;  
+  custom.services.syncthing.enable = true;
 
   networking.hostName = "ustrice"; # Define your hostname.
 
@@ -39,10 +41,6 @@
     # packages = with pkgs; [ ];
   };
   home-manager.users.vlczak.imports = [ ./home.nix ];
-
-  networking.hosts = {
-    "0.0.0.0" = [ "paradise-s1.battleye.com" "test-s1.battleye.com" "paradiseenhanced-s1.battleye.com" ];
-  };
 
   networking.networkmanager.ensureProfiles.profiles = {
     "static-ethernet" = {
@@ -80,11 +78,6 @@
         }
       ];
     };
-  };
-
-  networking.firewall.interfaces."wg0" = {
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [ 22000 ];
   };
 
   services.udev.extraRules = ''

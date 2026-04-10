@@ -6,16 +6,19 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./../../modules/nixos/bootloader/systemd.nix
+    ../../modules
 
-    ./../../modules/nixos/shared
+    ./hardware-configuration.nix
 
     ./modules/minecraft.nix
-
-    ./../../modules/nixos/servers/ssh.nix
-    ./../../modules/nixos/servers/web_server.nix
   ];
+
+  custom.system.bootloader.systemd.enable = true;
+
+  custom.profiles.core = true;
+
+  custom.services.ssh.enable = true;
+  custom.services.syncthing.enable = true;
 
   networking.hostName = "krakatice"; # Define your hostname.
 

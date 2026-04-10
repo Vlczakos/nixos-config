@@ -14,7 +14,8 @@ let
   };
 in
 {
-  uboot = {
+  custom.system.bootloader.uboot = {
+    enable = true;
     image = "${ubootCB1}/u-boot-sunxi-with-spl.bin";
     offset = 8192;
   };

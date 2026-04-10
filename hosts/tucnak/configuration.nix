@@ -4,15 +4,19 @@
 }:
 {
   imports = [
+    ../../modules
+
     ./hardware-configuration.nix
-    ./../../modules/nixos/bootloader/systemd.nix
-
-    ./../../modules/nixos/gui
-
-    ./../../modules/nixos/shared
-
-    ./../../modules/nixos/graphic_drivers/intel.nix
   ];
+
+  custom.system.bootloader.systemd.enable = true;
+
+  custom.system.graphic_drivers.intel.enable = true;
+
+  custom.profiles.core = true;
+  custom.profiles.gui = true;
+  
+  custom.services.syncthing.enable = true;
 
   networking.hostName = "tucnak"; # Define your hostname.
 
@@ -50,11 +54,6 @@
         }
       ];
     };
-  };
-
-  networking.firewall.interfaces."wg0" = {
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [ 22000 ];
   };
 
   # disable tpm2 - not used and startup service timed out several times

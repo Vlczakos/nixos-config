@@ -6,14 +6,15 @@ let
 in
 {
   imports = [
-    ./../../modules/nixos/bootloader/uboot.nix
+    ../../modules
+
     ./modules/uboot.nix
     ./modules/kernel.nix
-
-    ./../../modules/nixos/shared
-
-    ./../../modules/nixos/servers/ssh.nix
   ];
+
+  custom.profiles.core = true;
+
+  custom.services.ssh.enable = true;
 
   networking.hostName = "vorvan";
 
