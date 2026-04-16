@@ -99,6 +99,7 @@
       ];
     };
   };
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking.firewall.interfaces."wg0" = {
     allowedTCPPorts = [ 22000 ];
