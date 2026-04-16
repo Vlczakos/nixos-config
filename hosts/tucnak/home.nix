@@ -1,9 +1,5 @@
 { ... }:
 {
-  imports = [
-    ./../../modules/home_manager/gui
-  ];
-
   home.username = "vlczak";
   home.homeDirectory = "/home/vlczak";
 
