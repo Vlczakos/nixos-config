@@ -57,14 +57,14 @@ in
 
         devices = {
           "nemo" = {
-            id = "FI3A477-2ZEKHQY-DRXOXPC-VTEPT22-UYJOA66-7IFPOTM-US7JWOI-V46VTQM";
+            id = "4GR6R6D-K4LYPYF-L3COZKB-2EYS7DU-AW3ZVEY-FLFOMR2-N7K463F-22M5DQ5";
             addresses = [
               "quic://10.20.30.70:22000"
               "tcp://10.20.30.70:22000"
             ];
           };
           "ustrice" = {
-            id = "X7N5G26-ES7BGE7-ASXEHHJ-DHUPBY7-CNLPHXU-RDEQKNS-2TIGU42-EYU3EAY";
+            id = "BY6QHBI-IYP6A46-QDPGCVY-5DAFHGT-NX4VYFI-KJW6Z26-VDJUCSN-IBPRHAR";
             addresses = [
               "quic://10.20.30.80:22000"
               "tcp://10.20.30.80:22000"
@@ -98,6 +98,7 @@ in
           globalAnnounceEnabled = false;
           localAnnounceEnabled = false;
           natEnabled = false;
+          urAccepted = -1;
           # guiEnabled = false;
         };
       };
