@@ -78,11 +78,6 @@
     };
   };
 
-  networking.firewall.interfaces."wg0" = {
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [ 22000 ];
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

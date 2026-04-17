@@ -100,11 +100,9 @@
     };
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
-  networking.firewall.interfaces."wg0" = {
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [ 22000 ];
-  };
+  networking.firewall.extraCommands = ''
+    iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
