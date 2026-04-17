@@ -53,11 +53,8 @@
             serverPath = "${lib.getExe pkgs.nixd}";
 
             serverSettings.nixd = {
-              formatting.command = "${lib.getExe pkgs.nixfmt}";
-
-              options = {
-                nixos.expr = "(builtins.getFlake \"/nixos-config/flake.nix\").nixosConfigurations.nixos.options";
-              };
+              formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
+              options.nixos.expr = "(builtins.getFlake \"/nixos-config/flake.nix\").nixosConfigurations.nixos.options";
             };
           };
           editor.minimap.enabled = false;
