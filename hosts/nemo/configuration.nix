@@ -104,6 +104,39 @@
     iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT
   '';
 
+  services.syncthing.settings.folders = {
+    "~/Pictures/Photos" = {
+      versioning = {
+        type = "trashcan";
+        fsPath = "~/Pictures/PhotosDeleted";
+      };
+    };
+
+    "~/Pictures" = {
+      versioning = {
+        type = "staggered";
+        fsPath = "~/backup/Pictures";
+
+        params = {
+          cleanInterval = "3600";
+          maxAge = "30";
+        };
+      };
+    };
+
+    "~/Documents" = {
+      versioning = {
+        type = "staggered";
+        fsPath = "~/backup/Documents";
+
+        params = {
+          cleanInterval = "3600";
+          maxAge = "30";
+        };
+      };
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
